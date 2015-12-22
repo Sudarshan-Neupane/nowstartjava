@@ -57,6 +57,8 @@
 						<h3 class="panel-title">Filter</h3>
 					</div>
 					<ul class="list-group" ng-controller="category">
+						<li class="list-group-item list-group-item-success categoryList"><span
+							class="glyphicon glyphicon-folder-open"> &nbsp; </span>All </li>
 						<li class="list-group-item list-group-item-success categoryList"
 							ng-repeat="n in category"><span
 							class="glyphicon glyphicon-folder-open"> &nbsp; </span>{{n.name}}</li>
@@ -88,7 +90,94 @@
 						</div>
 					</div>
 				</div>
-
+<div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label> <input type="radio" name="optradio">Option
+                                1
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
 			</div>
 		</div>

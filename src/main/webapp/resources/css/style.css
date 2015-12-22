@@ -8,6 +8,8 @@
 } */
 #divTotal {
 	background-color: green;
+	text-align: center;
+	font-weight: bold;
 }
 
 #price {

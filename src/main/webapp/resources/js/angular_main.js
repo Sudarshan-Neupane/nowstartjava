@@ -4,7 +4,7 @@ app.controller('category', function($scope, $http) {
 	// $scope.searchMe = function() {
 	var value1 = $http({
 		method : 'GET',
-		url : '/giveit/category'
+		url : '/tutorials/category'
 	})
 	value1.success(function(data, status, headers, config) {
 		$scope.category = data;

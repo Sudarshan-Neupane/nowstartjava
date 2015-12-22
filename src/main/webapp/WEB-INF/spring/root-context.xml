@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    <context:component-scan base-package="com.nowstartjava.tutorials">
+        <context:exclude-filter type="annotation"
+            expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <jpa:repositories base-package="com.nowstartjava.tutorials.repository"></jpa:repositories>
+    <!--define datasource -->
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/nowstartjava" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </bean>
+    <!--Entity Manager Factory (id must be entityManagerFactory) -->
+     <bean
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+        id="entityManagerFactory">
+        <property name="packagesToScan" value="com.nowstartjava.tutorials.model" />
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+            </props>
+        </property>
+        <property name="persistenceProvider">
+            <bean class="org.hibernate.jpa.HibernatePersistenceProvider" />
+        </property>
+    </bean> 
+    <!-- enable the configuration of transactional behavior based on annotations -->
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager"
+        id="transactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
 </beans>

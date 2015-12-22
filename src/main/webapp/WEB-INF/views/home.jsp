@@ -40,7 +40,7 @@
 							<div class="menu">
 								<a href="#">About Us</a>
 							</div>
-							<div class="menu">
+							<div class="menu">div
 								<a href="#">Contact</a>
 							</div>
 						</div>
@@ -58,7 +58,7 @@
 					</div>
 					<ul class="list-group" ng-controller="category">
 						<li class="list-group-item list-group-item-success categoryList"><span
-							class="glyphicon glyphicon-folder-open"> &nbsp; </span>All </li>
+							class="glyphicon glyphicon-folder-open"> &nbsp; </span>All</li>
 						<li class="list-group-item list-group-item-success categoryList"
 							ng-repeat="n in category"><span
 							class="glyphicon glyphicon-folder-open"> &nbsp; </span>{{n.name}}</li>
@@ -67,7 +67,16 @@
 			</div>
 
 			<div class="col-xs-8 col-md-8 col-sm-8 col-lg-8"
-				ng-controller="displayItemsAll">
+				ng-controller="displayAllTutorials">
+				<div class="panel panel-primary"
+					ng-repeat="tutorials in displayTutorial">
+					<div class="panel-heading">
+						<span class="panel-title">{{ tutorials.title}}</span> <span
+							class="pull-right"> {{ tutorials.dateCreated |
+							date:'yyyy-MM-dd'}}</span>
+					</div>
+					<div class="panel-body">{{ tutorials.description }}</div>
+				</div>
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Panel title</h3>
@@ -90,95 +99,6 @@
 						</div>
 					</div>
 				</div>
-<div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optradio">Option
-                                1
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
 			</div>
 		</div>
 	</div>

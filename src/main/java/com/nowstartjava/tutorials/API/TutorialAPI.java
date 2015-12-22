@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nowstartjava.tutorials.model.Category;
-import com.nowstartjava.tutorials.service.CategoryService;
+import com.nowstartjava.tutorials.model.Tutorials;
+import com.nowstartjava.tutorials.service.TutorialService;
 
 @RestController
-public class CategoryAPI {
+public class TutorialAPI {
 	@Autowired
-	private CategoryService categoryService;
+	private TutorialService tutorialservice;
 
-	@RequestMapping(value = "/category", method = RequestMethod.GET)
-	public List<Category> getCategory() {
-		return categoryService.findAll();
+	@RequestMapping(value = "/tutorial", method = RequestMethod.GET)
+	public List<Tutorials> getTutorials() {
+		return tutorialservice.findAll();
 	}
 
-	@RequestMapping(value = "/category", method = RequestMethod.POST)
-	public ResponseEntity<String> postCategory(@RequestBody Category category,
-			Model model) {
-		categoryService.save(category);
+	@RequestMapping(value = "/tutorial", method = RequestMethod.POST)
+	public ResponseEntity<String> postTutorils(
+			@RequestBody Tutorials tutorials, Model model) {
+		tutorialservice.save(tutorials);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 }

@@ -15,7 +15,7 @@ public class CategoryServiceImpl implements CategoryService{
 	@Autowired
 	private CategoryRepository categoryRepo;
 	@Override
-	public Category findOne(long itemId) {
+	public Category findOne(int itemId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

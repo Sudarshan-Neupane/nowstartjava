@@ -90,7 +90,8 @@ public class Tutorials {
 	}
 
 	public void setSlug(String slug) {
-		this.slug = slug;
+		String slug1 = title.replace(" ", "-");
+		this.slug = slug1;
 	}
 
 	public boolean isActive() {
@@ -108,5 +109,5 @@ public class Tutorials {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
+	
 }

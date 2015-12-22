@@ -14,15 +14,17 @@ app.controller('category', function($scope, $http) {
 	}
 	// }
 });
-app.controller('displayItemsAll', function($scope, $http) {
-	var value = $http({
-		method : 'GET',
-		url : '/giveit/displayItems'
+app.controller('displayAllTutorials',function($scope,$http){
+	var value= $http({
+		method:'GET',
+		url:'/tutorials/tutorial'
 	})
-	value.success(function(data, status, headers, config) {
-		$scope.itemsDisplay = data;
+	value.success(function(data,status,headers,config){
+		$scope.displayTutorial =data;
 	})
 });
+
+
 
 app.controller('country', function($scope, $http) {
 	$scope.searchMe = function() {

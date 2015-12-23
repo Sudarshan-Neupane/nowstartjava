@@ -61,10 +61,19 @@
 							class="glyphicon glyphicon-folder-open"> &nbsp; </span>All</li>
 						<li class="list-group-item list-group-item-success categoryList"
 							ng-repeat="n in category"><span
-							class="glyphicon glyphicon-folder-open" ng-click="selectCategory(n.id)"> &nbsp; </span>
-							{{n.name}}
-						</li>
+							class="glyphicon glyphicon-folder-open"
+							ng-click="selectCategory(n.id)"> &nbsp; </span> {{n.name}}</li>
+						<div class="panel panel-primary" ng-repeat="tuts in tutsBycat">
+							<div class="panel-heading">
+								<h3 class="panel-title">{{ tuts.title }}</h3>
+							</div>
+							<div class="panel-body">
+								<div class="radio">{{ tuts.description }}</div>
+
+							</div>
+						</div>
 					</ul>
+
 				</div>
 			</div>
 
@@ -79,28 +88,7 @@
 					</div>
 					<div class="panel-body">{{ tutorials.description }}</div>
 				</div>
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Panel title</h3>
-					</div>
-					<div class="panel-body">
-						<div class="radio">
-							<label> <input type="radio" name="optradio">Option
-								1
-							</label>
-						</div>
-						<div class="radio">
-							<label> <input type="radio" name="optradio">Option
-								1
-							</label>
-						</div>
-						<div class="radio">
-							<label> <input type="radio" name="optradio">Option
-								1
-							</label>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

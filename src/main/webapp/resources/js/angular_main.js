@@ -10,21 +10,26 @@ app.controller('category', function($scope, $http) {
 		$scope.category = data;
 	})
 	$scope.selectCategory = function(id) {
-		alert("test"+id);
+		var tutorialbyCat = $http({
+			method : 'GET',
+			url : '/tutorials/tutorial/' + id
+		})
+		tutorialbyCat.success(function(data, status, headers, congig) {
+			$scope.tutsBycat = data;
+		})
+
 	}
 	// }
 });
-app.controller('displayAllTutorials',function($scope,$http){
-	var value= $http({
-		method:'GET',
-		url:'/tutorials/tutorial'
+app.controller('displayAllTutorials', function($scope, $http) {
+	var value = $http({
+		method : 'GET',
+		url : '/tutorials/tutorial'
 	})
-	value.success(function(data,status,headers,config){
-		$scope.displayTutorial =data;
+	value.success(function(data, status, headers, config) {
+		$scope.displayTutorial = data;
 	})
 });
-
-
 
 app.controller('country', function($scope, $http) {
 	$scope.searchMe = function() {

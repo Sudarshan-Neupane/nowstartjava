@@ -34,8 +34,7 @@ public class TutorialAPI {
 	
 	//Retrieve the category data
 	@RequestMapping(value="/tutorial/{catId}", method= RequestMethod.GET)
-	public List<Tutorials> getTutorialsByCategory(@PathVariable int catId){
-		System.out.println(catId);
+	public List<Tutorials> getTutorialsByCategory(@PathVariable Integer catId){
 		return tutorialservice.findAllByCategoryId(catId);
 	}
 }

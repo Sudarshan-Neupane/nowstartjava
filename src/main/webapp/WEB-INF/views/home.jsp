@@ -20,6 +20,8 @@
 <script src="<c:url value="/resources/js/angular_main.js" />">
 	
 </script>
+<style type="text/css">
+</style>
 
 </head>
 <body>
@@ -49,36 +51,27 @@
 			</nav>
 		</div>
 
-		<div class="row">
+		<div class="row" ng-controller="category">
 
 			<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
 				<div class="panel panel-primary">
 					<div id="divTotal" class="panel-heading">
 						<h3 class="panel-title">Filter</h3>
 					</div>
-					<ul class="list-group" ng-controller="category">
-						<li class="list-group-item list-group-item-success categoryList"><span
-							class="glyphicon glyphicon-folder-open"> &nbsp; </span>All</li>
+					<ul class="list-group">
 						<li class="list-group-item list-group-item-success categoryList"
-							ng-repeat="n in category"><span
-							class="glyphicon glyphicon-folder-open"
-							ng-click="selectCategory(n.id)"> &nbsp; </span> {{n.name}}</li>
-						<div class="panel panel-primary" ng-repeat="tuts in tutsBycat">
-							<div class="panel-heading">
-								<h3 class="panel-title">{{ tuts.title }}</h3>
-							</div>
-							<div class="panel-body">
-								<div class="radio">{{ tuts.description }}</div>
-
-							</div>
-						</div>
+							ng-click="selectCategory(0)"><input type="radio"
+							name="category" class="radio-primary" checked="checked">All</li>
+						<li class="list-group-item list-group-item-success categoryList"
+							ng-repeat="n in category"><input type="radio"
+							name="category" class="radio-primary"
+							ng-click="selectCategory(n.id)"> {{n.name}}</li>
 					</ul>
 
 				</div>
 			</div>
 
-			<div class="col-xs-8 col-md-8 col-sm-8 col-lg-8"
-				ng-controller="displayAllTutorials">
+			<div class="col-xs-8 col-md-8 col-sm-8 col-lg-8">
 				<div class="panel panel-primary"
 					ng-repeat="tutorials in displayTutorial">
 					<div class="panel-heading">
@@ -86,9 +79,21 @@
 							class="pull-right"> {{ tutorials.dateCreated |
 							date:'yyyy-MM-dd'}}</span>
 					</div>
-					<div class="panel-body">{{ tutorials.description }}</div>
+					<div class="panel-body">
+						{{ tutorials.description }}
+
+						<div class="shareSocial">
+						<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+						<a href="${contextPath}/learnmore/{{tutorials.slug}}"> <button type="button" class="btn btn-primary">Learn More</button>
+						</a>
+							<%--  <img alt="share Facebook" src="<c:url value="/resources/images/share_fb.png" />">
+                     <img alt="share Facebook" src="<c:url value="/resources/images/twitter-share.png" />">
+                     --%>
+						</div>
+					</div>
+
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

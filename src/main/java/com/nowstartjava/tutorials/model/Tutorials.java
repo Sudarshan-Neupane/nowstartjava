@@ -20,7 +20,7 @@ public class Tutorials {
 	private int id;
 	private String title;
 	private String image;
-	@Column(name = "description", columnDefinition = "TEXT")
+	@Column(name = "description", length= 4000)
 	private String description;
 	private Date dateCreated;
 	private int numberOfViewers;

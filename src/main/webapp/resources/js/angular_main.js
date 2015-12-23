@@ -9,8 +9,8 @@ app.controller('category', function($scope, $http) {
 	value1.success(function(data, status, headers, config) {
 		$scope.category = data;
 	})
-	$scope.searchMenow = function() {
-		alert("test");
+	$scope.selectCategory = function(id) {
+		alert("test"+id);
 	}
 	// }
 });

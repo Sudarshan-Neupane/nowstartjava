@@ -2,6 +2,7 @@ package com.nowstartjava.tutorials.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,13 +13,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="tutorials")
+@Table(name = "tutorials")
 public class Tutorials {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String title;
 	private String image;
+	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
 	private Date dateCreated;
 	private int numberOfViewers;
@@ -109,5 +111,5 @@ public class Tutorials {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
+
 }

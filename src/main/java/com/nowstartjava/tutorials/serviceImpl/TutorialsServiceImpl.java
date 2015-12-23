@@ -2,20 +2,19 @@ package com.nowstartjava.tutorials.serviceImpl;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.nowstartjava.tutorials.model.Tutorials;
 import com.nowstartjava.tutorials.repository.TutorialRepository;
 import com.nowstartjava.tutorials.service.TutorialService;
-import org.springframework.data.domain.Sort;
 
 @Service
 public class TutorialsServiceImpl implements TutorialService {
 
 	@Autowired
-	private TutorialRepository tutorialsRepository;
+	public TutorialRepository tutorialsRepository;
 	
 	@Override
 	public Tutorials findOne(int id) {
@@ -40,6 +39,12 @@ public class TutorialsServiceImpl implements TutorialService {
 	}
 	private Sort sortBydesc(){
 		return new Sort(Sort.Direction.DESC,"id");
+	}
+
+	@Override
+	public List<Tutorials> findAllByCategoryId(Integer id) {
+		// TODO Auto-generated method stub
+		return tutorialsRepository.findTutorialsByCategoryId(id);
 	}
 
 }

@@ -40,7 +40,7 @@
 							<div class="menu">
 								<a href="#">About Us</a>
 							</div>
-							<div class="menu">div
+							<div class="menu">
 								<a href="#">Contact</a>
 							</div>
 						</div>
@@ -61,7 +61,9 @@
 							class="glyphicon glyphicon-folder-open"> &nbsp; </span>All</li>
 						<li class="list-group-item list-group-item-success categoryList"
 							ng-repeat="n in category"><span
-							class="glyphicon glyphicon-folder-open"> &nbsp; </span>{{n.name}}</li>
+							class="glyphicon glyphicon-folder-open" ng-click="selectCategory(n.id)"> &nbsp; </span>
+							{{n.name}}
+						</li>
 					</ul>
 				</div>
 			</div>

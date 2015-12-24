@@ -31,8 +31,7 @@
 			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="header">
 					<div class="col-lg-3">
-						<a href="<c:url value="/${object.argument}" />"> <img
-							alt="company logo"
+						<a href="<c:url value="/${object.argument}" />"> <img alt="company logo"
 							src="<c:url value="/resources/images/logo.png" />">
 						</a>
 					</div>
@@ -54,12 +53,12 @@
 		</div>
 
 		<div class="row" ng-controller="category">
-
 			<div class="col-xs-7 col-md-7 col-sm-7 col-lg-3">
-				<div class="panel panel-primary">
-					<div id="divTotal" class="panel-heading">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
 						<h3 class="panel-title">Filter</h3>
 					</div>
+
 					<ul class="list-group">
 						<li class="list-group-item list-group-item-success categoryList"
 							ng-click="selectCategory(0)"><input type="radio"
@@ -74,7 +73,7 @@
 			</div>
 
 			<div class="col-xs-7 col-md-7 col-sm-7 col-lg-7">
-				<div class="panel panel-primary"
+				<div class="panel panel-success"
 					ng-repeat="tutorials in displayTutorial">
 					<div class="panel-heading">
 						<span class="panel-title">{{ tutorials.title}}</span> <span
@@ -102,9 +101,8 @@
 			</div>
 			<div class="col-xs-2 col-md-2 col-sm-2 col-lg-2">
 				<div class="panel panel-primary">
-
 					<img alt="company logo"
-						src="<c:url value="/resources/images/four.jpg" />">
+						src="<c:url value="/resources/images/three.jpg" />">
 				</div>
 			</div>
 		</div>

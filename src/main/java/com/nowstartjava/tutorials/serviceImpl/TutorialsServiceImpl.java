@@ -15,7 +15,7 @@ public class TutorialsServiceImpl implements TutorialService {
 
 	@Autowired
 	public TutorialRepository tutorialsRepository;
-	
+
 	@Override
 	public Tutorials findOne(int id) {
 		// TODO Auto-generated method stub
@@ -35,16 +35,23 @@ public class TutorialsServiceImpl implements TutorialService {
 	@Override
 	public void delete(Tutorials tutorials) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	private Sort sortBydesc(){
-		return new Sort(Sort.Direction.DESC,"id");
+
+	private Sort sortBydesc() {
+		return new Sort(Sort.Direction.DESC, "id");
 	}
 
 	@Override
 	public List<Tutorials> findAllByCategoryId(Integer id) {
 		// TODO Auto-generated method stub
 		return tutorialsRepository.findTutorialsByCategoryId(id);
+	}
+
+	@Override
+	public Tutorials findOneBySlug(String slug) {
+		// TODO Auto-generated method stub
+		return tutorialsRepository.findTutorialBySlug(slug);
 	}
 
 }

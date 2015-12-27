@@ -68,7 +68,7 @@ public class TutorialsContent {
 	}
 
 	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+		this.dateCreated = new Date();
 	}
 
 	public int getNumberOfViewers() {
@@ -92,7 +92,9 @@ public class TutorialsContent {
 	}
 
 	public void setSlug(String slug) {
-		this.slug = slug;
+		int num = (int)(Math.random() * 1001);
+		String slug1 = title.replace(" ", "-")+num;
+		this.slug = slug1;
 	}
 
 	public boolean isActive() {

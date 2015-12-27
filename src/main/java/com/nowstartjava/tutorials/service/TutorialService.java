@@ -5,7 +5,7 @@ import java.util.List;
 import com.nowstartjava.tutorials.model.Tutorials;
 
 public interface TutorialService {
-	
+
 	public Tutorials findOne(int id);
 
 	public List<Tutorials> findAll();
@@ -15,4 +15,6 @@ public interface TutorialService {
 	public void delete(Tutorials tutorials);
 
 	public List<Tutorials> findAllByCategoryId(Integer id);
+
+	public Tutorials findOneBySlug(String slug);
 }

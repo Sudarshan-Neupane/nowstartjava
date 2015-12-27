@@ -1,6 +1,7 @@
 package com.nowstartjava.tutorials.model;
 
 import java.util.Date;
+import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -92,7 +93,8 @@ public class Tutorials {
 	}
 
 	public void setSlug(String slug) {
-		String slug1 = title.replace(" ", "-");
+		int num = (int)(Math.random() * 1001);
+		String slug1 = title.replace(" ", "-")+num;
 		this.slug = slug1;
 	}
 

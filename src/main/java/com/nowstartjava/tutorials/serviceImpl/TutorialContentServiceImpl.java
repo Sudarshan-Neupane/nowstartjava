@@ -17,7 +17,7 @@ public class TutorialContentServiceImpl implements TutorialContentService {
 	@Override
 	public TutorialsContent findOne(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return tutsContentRepo.findOne(id);
 	}
 
 	@Override
@@ -40,7 +40,6 @@ public class TutorialContentServiceImpl implements TutorialContentService {
 	@Override
 	public List<TutorialsContent> tutorialContentByTutorial(int id) {
 		return tutsContentRepo.findTutorialContentByTutorial(id);
-		
 	}
 
 }

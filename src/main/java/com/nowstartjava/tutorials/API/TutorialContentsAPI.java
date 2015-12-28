@@ -25,7 +25,6 @@ public class TutorialContentsAPI {
 	public List<TutorialsContent> displayContent(@PathVariable("slugToId") Integer id) {
 		//find tutorialcontent By tutorial
 		return tutscontentservice.tutorialContentByTutorial(id);
-//		return tutscontentservice.findAll();
 	}
 
 	@RequestMapping(value = "/details", method = RequestMethod.POST)
@@ -33,5 +32,10 @@ public class TutorialContentsAPI {
 			@RequestBody TutorialsContent tutscontent, Model model) {
 		tutscontentservice.save(tutscontent);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+	//Display content details by id
+	@RequestMapping(value="/displayDetails/{contentid}",method=RequestMethod.GET)
+	public TutorialsContent displayDetails(@PathVariable("contentid") Integer contentid){
+		return tutscontentservice.findOne(contentid);
 	}
 }

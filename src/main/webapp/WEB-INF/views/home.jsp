@@ -98,7 +98,11 @@
 					</div>
 
 				</div>
-
+				<div class="panel panel-primary" ng-show="!displayTutorial.length">
+					<div class="alert alert-warning">
+						<h1>Tutorial on this topic will be uploaded soon!!</h1>
+					</div>
+				</div>
 			</div>
 			<div class="col-xs-2 col-md-2 col-sm-2 col-lg-2">
 				<div class="panel panel-primary">

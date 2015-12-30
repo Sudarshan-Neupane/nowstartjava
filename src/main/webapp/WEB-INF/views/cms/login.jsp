@@ -31,17 +31,18 @@
 </head>
 
   <body class="login-img3-body">
+  ${loginError}
     <div class="container">
-      <form class="login-form" action="index.html">        
+      <form class="login-form" action="cms" method="post">        
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="Username" autofocus>
+              <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password">
             </div>
             <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me

@@ -4939,3 +4939,8 @@ span.customSelect.changed {
 .customSelectInner {
     background:url(../img/customSelect-arrow.gif) no-repeat center right;
 }
+.loginError {
+	color:red;
+	font-weight: bold;
+	
+}

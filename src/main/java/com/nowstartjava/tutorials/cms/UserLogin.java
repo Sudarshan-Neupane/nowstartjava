@@ -1,8 +1,11 @@
 package com.nowstartjava.tutorials.cms;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +26,22 @@ public class UserLogin {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String verifylogin(@RequestParam String username,
-			 @RequestParam String password) {
-//		User user = userservice.loginUser(username, password);
-		System.out.println(userservice.loginUser(username, password).getEmail());
+			 @RequestParam String password,HttpSession session,Model model) {
+		User user = userservice.loginUser(username, password);
+		if(user ==null){
+			model.addAttribute("loginError", "Invalid UserName or password.");
+			return "cms/login";
+		}
+		session.setAttribute("loginUser", user);
+		return "redirect:/cms/loginsuccess";
 		
-		return null;
+	}
+	@RequestMapping(value="/loginsuccess" ,method=RequestMethod.GET)
+	public String loginSuccess(HttpSession session){
+		if(session.getAttribute("loginUser")==null){
+			return "redirect:/cms";
+		}
+		System.out.println(session.getAttribute("loginUser"));
+		return "cms/dashBoard";
 	}
 }

@@ -31,11 +31,12 @@
 </head>
 
   <body class="login-img3-body">
-  ${loginError}
+  
     <div class="container">
       <form class="login-form" action="cms" method="post">        
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
+            <p style="color: red;font-weight: bold;" > ${loginError}</p>
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
               <input type="text" name="username" class="form-control" placeholder="Username" autofocus>

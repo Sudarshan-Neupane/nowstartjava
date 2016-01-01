@@ -2,6 +2,8 @@ package com.nowstartjava.tutorials.API;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +26,18 @@ public class CategoryAPI {
 		return categoryService.findAll();
 	}
 
-	@RequestMapping(value = "/category", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/category", method = RequestMethod.POST)
 	public ResponseEntity<String> postCategory(@RequestBody Category category,
 			Model model) {
 		categoryService.save(category);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}*/
+
+	@RequestMapping(value = "/category", method = RequestMethod.POST)
+	public ResponseEntity<Category> postCategory1(@Valid @RequestBody Category category,
+			Model model) {
+		categoryService.save(category);
+		return new ResponseEntity<Category>(HttpStatus.OK);
 	}
+
 }

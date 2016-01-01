@@ -41,7 +41,6 @@ public class UserLogin {
 		if(session.getAttribute("loginUser")==null){
 			return "redirect:/cms";
 		}
-		System.out.println(session.getAttribute("loginUser"));
 		return "cms/dashBoard";
 	}
 }

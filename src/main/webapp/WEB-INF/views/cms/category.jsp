@@ -15,13 +15,10 @@
 					};
 					var result = $http.post("/tutorials/category", dataObj);
 					result.success(function(data, status, headers, config) {
-						alert("success");
-						$scope.message = data;
+						$scope.message = "Data Inserted successfully";
 					});
 					result.error(function(data, status, headers, config) {
-						alert("failure message: " + JSON.stringify({
-							data : data
-						}));
+						$scope.message = "Error while inserting the data.";
 					});
 
 					$scope.name = '';
@@ -63,6 +60,9 @@
 							<header class="panel-heading"> Basic Forms </header>
 							<div class="panel-body">
 								<form role="form" method="post" ng-submit="submitClick()">
+									<div class="alert alert-success" ng-show="message">
+										<strong>{{message }}</strong>
+									</div>
 									<div class="form-group">
 										<label for="category">Category</label> <input type="text"
 											class="form-control" id="exampleInputEmail1" name="name"

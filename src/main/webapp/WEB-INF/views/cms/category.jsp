@@ -59,22 +59,27 @@
 						<section class="panel" ng-controller="submitCategory">
 							<header class="panel-heading"> Basic Forms </header>
 							<div class="panel-body">
-								<form role="form" method="post" ng-submit="submitClick()">
+								<form role="form" method="post" ng-submit="submitClick()"
+									name="categoryForm">
 									<div class="alert alert-success" ng-show="message">
 										<strong>{{message }}</strong>
 									</div>
-									<div class="form-group">
+									<div class="form-group"
+										ng-class="{ 'has-error' : categoryForm.name.$invalid && !categoryForm.name.$pristine }">
 										<label for="category">Category</label> <input type="text"
 											class="form-control" id="exampleInputEmail1" name="name"
-											placeholder="Category" ng-model="name">
+											placeholder="Category" ng-model="name" ng-minlength="3" required>
+										<p ng-show="categoryForm.name.$error.minlength" class="help-block">Category
+											is too short</p>
 									</div>
-									<button type="submit" class="btn btn-primary">Submit</button>
+
+									<button type="submit" class="btn btn-primary" ng-disabled="categoryForm.$invalid">Submit</button>
 								</form>
+
 
 							</div>
 						</section>
 					</div>
-
 				</div>
 
 			</section>

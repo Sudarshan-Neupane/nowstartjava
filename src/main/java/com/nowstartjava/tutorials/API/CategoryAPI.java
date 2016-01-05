@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,18 +27,24 @@ public class CategoryAPI {
 		return categoryService.findAll();
 	}
 
-	/*@RequestMapping(value = "/category", method = RequestMethod.POST)
-	public ResponseEntity<String> postCategory(@RequestBody Category category,
-			Model model) {
-		categoryService.save(category);
-		return new ResponseEntity<String>("success", HttpStatus.OK);
-	}*/
-
 	@RequestMapping(value = "/category", method = RequestMethod.POST)
-	public ResponseEntity<Category> postCategory1(@Valid @RequestBody Category category,
-			Model model) {
+	public ResponseEntity<Category> postCategory1(
+			@Valid @RequestBody Category category, Model model) {
 		categoryService.save(category);
 		return new ResponseEntity<Category>(HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Category> deleteCategoryById(
+			@PathVariable("id") Integer id) {
+		Category cat = categoryService.findOne(id);
+		if(cat == null){
+			 System.out.println("Unable to delete. Category with id " + id + " not found");
+			 return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
+		}
+		categoryService.deleteById(id);
+		return new ResponseEntity<Category>(HttpStatus.NO_CONTENT);
+
 	}
 
 }

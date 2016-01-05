@@ -10,14 +10,14 @@ import com.nowstartjava.tutorials.repository.CategoryRepository;
 import com.nowstartjava.tutorials.service.CategoryService;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	private CategoryRepository categoryRepo;
+
 	@Override
 	public Category findOne(int itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryRepo.findOne(itemId);
 	}
 
 	@Override
@@ -28,13 +28,18 @@ public class CategoryServiceImpl implements CategoryService{
 	@Override
 	public void save(Category category) {
 		categoryRepo.save(category);
-		
+
 	}
 
 	@Override
 	public void delete(Category category) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		categoryRepo.delete(id);
 	}
 
 }

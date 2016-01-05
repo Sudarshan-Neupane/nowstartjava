@@ -23,6 +23,26 @@
 
 					$scope.name = '';
 				}
+				var category = $http({
+					method : 'GET',
+					url : '/tutorials/category'
+				})
+				category.success(function(data, status, header, config) {
+					$scope.displayCategory = data;
+				});
+				//Delete Category 
+				$scope.deleteCategory = function(id) {
+					var deletedata = $http({
+						method : 'DELETE',
+						url : '/tutorials/deleteCategory/' + id
+					})
+					deletedata.success(function(data, status, header, config) {
+						$scope.deletevlaue =data;
+					})
+					deletedata.error(function(data, status, headers, config) {
+						alert("error while data delete")
+					});
+				}
 			} ]);
 </script>
 </head>
@@ -54,9 +74,9 @@
 				</div>
 				<!-- Basic Forms & Horizontal Forms-->
 
-				<div class="row">
+				<div class="row" ng-controller="submitCategory">
 					<div class="col-lg-6">
-						<section class="panel" ng-controller="submitCategory">
+						<section class="panel">
 							<header class="panel-heading"> Basic Forms </header>
 							<div class="panel-body">
 								<form role="form" method="post" ng-submit="submitClick()"
@@ -68,19 +88,50 @@
 										ng-class="{ 'has-error' : categoryForm.name.$invalid && !categoryForm.name.$pristine }">
 										<label for="category">Category</label> <input type="text"
 											class="form-control" id="exampleInputEmail1" name="name"
-											placeholder="Category" ng-model="name" ng-minlength="3" required>
-										<p ng-show="categoryForm.name.$error.minlength" class="help-block">Category
-											is too short</p>
+											placeholder="Category" ng-model="name" ng-minlength="3"
+											required>
+										<p ng-show="categoryForm.name.$error.minlength"
+											class="help-block">Category is too short</p>
 									</div>
 
-									<button type="submit" class="btn btn-primary" ng-disabled="categoryForm.$invalid">Submit</button>
+									<button type="submit" class="btn btn-primary"
+										ng-disabled="categoryForm.$invalid">Submit</button>
 								</form>
 
 
 							</div>
 						</section>
 					</div>
+					<div class="col-lg-6">
+						<section class="panel">
+							<header class="panel-heading"> Display Category </header>
+
+							<table class="table table-striped table-advance table-hover">
+								<tbody>
+									<tr>
+										<th><i class="icon_profile"></i> S.No</th>
+										<th><i class="icon_calendar"></i> Category</th>
+										<th><i class="icon_cogs"></i> Action</th>
+									</tr>
+									<tr ng-repeat="category in displayCategory">
+										<td>{{$index + 1}}</td>
+										<td>{{ category.name }}</td>
+										<td>
+											<div class="btn-group">
+												<button type="button" class="btn btn-success">Edit</button>
+												<button type="button" class="btn btn-danger"
+													ng-click="deleteCategory(category.id)">
+													<span class="gicon_check_alt2"></span>Delete
+												</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</section>
+					</div>
 				</div>
+
 
 			</section>
 		</section>

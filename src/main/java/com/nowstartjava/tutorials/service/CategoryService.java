@@ -12,5 +12,7 @@ public interface CategoryService {
 	public void save(Category item);
 
 	public void delete(Category category);
+	
+	public void deleteById(Integer id);
 
 }

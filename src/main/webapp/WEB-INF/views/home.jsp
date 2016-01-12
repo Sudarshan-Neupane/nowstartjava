@@ -18,7 +18,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 <script src="<c:url value="/resources/js/angular_main.js" />">
-	
 </script>
 <style type="text/css">
 </style>

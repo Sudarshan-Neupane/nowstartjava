@@ -1,49 +1,15 @@
-
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
 <jsp:include page="headerInclude.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-<script type="text/javascript">
-	var app = angular.module("categoryApp", []);
-	app.controller('submitCategory', [ '$scope', '$http',
-			function($scope, $http) {
-				$scope.submitClick = function() {
-					var dataObj = {
-						name : $scope.name
-					};
-					var result = $http.post("/tutorials/category", dataObj);
-					result.success(function(data, status, headers, config) {
-						$scope.message = "Data Inserted successfully";
-					});
-					result.error(function(data, status, headers, config) {
-						$scope.message = "Error while inserting the data.";
-					});
-
-					$scope.name = '';
-				}
-				var category = $http({
-					method : 'GET',
-					url : '/tutorials/category'
-				})
-				category.success(function(data, status, header, config) {
-					$scope.displayCategory = data;
-				});
-				//Delete Category 
-				$scope.deleteCategory = function(id) {
-					var deletedata = $http({
-						method : 'DELETE',
-						url : '/tutorials/deleteCategory/' + id
-					})
-					deletedata.success(function(data, status, header, config) {
-						$scope.deletevlaue =data;
-					})
-					deletedata.error(function(data, status, headers, config) {
-						alert("error while data delete")
-					});
-				}
-			} ]);
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js">
+</script>
+<script src="<c:url value="/resources/cms/myJs/category.js" />">
 </script>
 </head>
 <body ng-app="categoryApp">

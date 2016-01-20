@@ -1,4 +1,4 @@
-package com.nowstartjava.tutorials;
+package com.nowstartjava.tutorials.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

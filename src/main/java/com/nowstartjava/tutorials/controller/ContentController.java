@@ -1,4 +1,4 @@
-package com.nowstartjava.tutorials;
+package com.nowstartjava.tutorials.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

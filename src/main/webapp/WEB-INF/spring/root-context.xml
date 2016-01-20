@@ -9,15 +9,21 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
     <context:annotation-config/>
-    
-    <jpa:repositories base-package="com.nowstartjava.tutorials.repository"></jpa:repositories>
-    <!--define datasource -->
-    <bean id="dataSource"
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/nowstartjava" />
-        <property name="username" value="root" />
-        <property name="password" value="" />
+
+	<jpa:repositories base-package="com.nowstartjava.tutorials.repository"></jpa:repositories>
+	<!--define datasource -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${db.driver}" />
+        <property name="url" value="${db.url}" />
+        <property name="username" value="${db.username}" />
+        <property name="password" value="${db.password}" />
     </bean>
     <!--Entity Manager Factory (id must be entityManagerFactory) -->
      <bean

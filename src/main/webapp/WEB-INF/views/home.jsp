@@ -1,58 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html ng-app="myapp">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>~~ nowstartjava.com ~~</title>
-<link rel="shortcut icon" type="image/png"
-	href="<c:url value="/resources/images/logo.png" />" />
-<link rel="stylesheet"
-	href="https://getbootstrap.com/dist/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet" type="text/css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <script src="<c:url value="/resources/js/angular_main.js" />">
 </script>
-<style type="text/css">
-</style>
-
-</head>
-<body>
-	<div class="container">
-		<div id="toppadingmenu"></div>
-		<div class="row">
-			<nav class="navbar navbar-default navbar-fixed-top">
-				<div class="header">
-					<div class="col-lg-3">
-						<a href="<c:url value="/${object.argument}" />"> <img
-							alt="company logo"
-							src="<c:url value="/resources/images/logo.png" />">
-						</a>
-					</div>
-					<div class="col-lg-9">
-						<div class="menuBar">
-							<div class="menu">
-								<a href="#">Home </a>
-							</div>
-							<div class="menu">
-								<a href="#">About Us</a>
-							</div>
-							<div class="menu">
-								<a href="#">Contact</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-
-		<div class="row" ng-controller="category">
+<div ng-app ="myapp">
+<div class="row" ng-controller="category">
 
 			<div class="col-xs-7 col-md-7 col-sm-7 col-lg-3">
 				<div class="panel panel-primary">
@@ -111,6 +62,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</body>
-</html>
+		</div>

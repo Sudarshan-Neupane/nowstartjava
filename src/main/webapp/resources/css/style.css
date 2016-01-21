@@ -3,6 +3,10 @@
 	padding: 0px auto;
 }
 
+.mainContent{
+	padding-top: 11px;
+}
+
 /* body {
     padding-top: 3px;
 } */
@@ -100,4 +104,25 @@ input[type='radio']:before {
 	
 	text-align:right;
 	border-top: 1px green;
+}
+.footer {
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+}
+
+.footer .language {
+	float: left
+}
+
+.footer .language a {
+	text-decoration: none;
+}
+
+.footer .copyright {
+	float: right;
+}
+.main-heading{
+	font-family: monospace;
+	font-size: 38px;
+	font-weight: bold;
 }

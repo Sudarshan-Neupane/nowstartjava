@@ -17,6 +17,7 @@ public class ContentController {
 	@RequestMapping(value = "/content/{slug}", method = RequestMethod.GET)
 	public String startTutorial(@PathVariable String slug, Model model) {
 		model.addAttribute("slugToid", tutorialServece.findOneBySlug(slug).getId());
+//		model.addAttribute("appName","displayContent");
 		return "displayContent";
 	}
 }

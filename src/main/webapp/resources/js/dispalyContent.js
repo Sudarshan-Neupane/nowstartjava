@@ -1,7 +1,7 @@
 /**
  * Sudarshan
  */
-var mainapp = angular.module('dispalyContent', []);
+var mainapp = angular.module('displayContent', []);
 mainapp.controller('content', function($scope, $http) {	
 	var dispalycontent = $http({
 		method : 'GET',

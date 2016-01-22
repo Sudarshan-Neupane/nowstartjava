@@ -1,22 +1,32 @@
 var app = angular.module("categoryApp", [ 'ngRoute' ]);
 app.controller('submitCategory', [ '$scope', '$http', '$location', '$route',
 		function($scope, $http, $location, $route) {
-			$scope.submitClick = function() {
+			$scope.title = "Add ";
+			$scope.submitClick = function(id) {
 				var dataObj = {
 					name : $scope.name
-				};				
-				var result = $http.post("/tutorials/category", dataObj);
-				/*  */
-				result.success(function(data, status, headers, config) {
-					// $scope.displayCategory.push(dataObj);
-					getCat();
-					$scope.message = "Data Inserted successfully";
-				});
-				result.error(function(data, status, headers, config) {
-					$scope.message = "Error while inserting the data.";
-				});
-
+				};
+				if (id) {
+					var updateSubmit = $http.post("/tutorials/updateCategory/" + id, dataObj);
+					updateSubmit.success(function(data, status, headers, config) {
+						getCat();
+						$scope.message = "Data has been changed! ";
+					});
+					updateSubmit.error(function(data, status, headers, config) {
+						$scope.message = "Error while Updating data.";
+					});
+				} else {
+					var result = $http.post("/tutorials/category", dataObj);
+					result.success(function(data, status, headers, config) {
+						getCat();
+						$scope.message = "Data Inserted successfully";
+					});
+					result.error(function(data, status, headers, config) {
+						$scope.message = "Error while inserting the data.";
+					});
+				}
 				$scope.name = '';
+				$scope.id ='';
 			}
 
 			getCat();
@@ -46,19 +56,10 @@ app.controller('submitCategory', [ '$scope', '$http', '$location', '$route',
 					alert("error while data delete")
 				});
 			}
-			$scope.editCategory = function(name,id) {
-				$scope.editValue = name;
+			$scope.editCategory = function(name, id) {
+				$scope.name = name;
 				$scope.editId = id;
-			}
-			//Edit category
-			$scope.submitEditCategory = function(id){
-				var data = {
-						name: $scope.editValue
-				};
-				var updateSubmit =$http.post("/tutorials/updateCategory/"+id,data);
-				updateSubmit.success(function(data, status, headers, config){
-					getCat();
-					$scope.editMessage = "Data has been changed! ";
-				});
+				$scope.title = " Update ";
+
 			}
 		} ]);

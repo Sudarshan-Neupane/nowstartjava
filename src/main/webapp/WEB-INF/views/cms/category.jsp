@@ -39,29 +39,16 @@
 						<section class="panel">
 							<header class="panel-heading"> Basic Forms </header>
 							<div class="panel-body">
-								<form role="form" method="post" ng-submit="submitClick()" name="categoryForm">
+								<form role="form" method="post" ng-submit="submitClick(editId)" name="categoryForm">
 									<div class="alert alert-success" ng-show="message">
 										<strong>{{message }}</strong>
 									</div>
 									<div class="form-group" ng-class="{ 'has-error' : categoryForm.name.$invalid && !categoryForm.name.$pristine }">
-										<label for="category">Category</label> <input type="text" class="form-control" id="exampleInputEmail1"
+										<label for="category"><b>{{ title }} </b>Category</label> <input type="text" class="form-control" id="exampleInputEmail1"
 											name="name" placeholder="Category" ng-model="name" ng-minlength="3" required>
 										<p ng-show="categoryForm.name.$error.minlength" class="help-block">Category is too short</p>
 									</div>
-									<button type="submit" class="btn btn-primary" ng-disabled="categoryForm.$invalid">Submit</button>
-								</form>
-							</div>
-						</section>
-						<section class="panel">
-							<header class="panel-heading">Update Category </header>
-							<div class="panel-body">
-								<form role="form" method="post" ng-submit="submitEditCategory(editId)" name="categoryEditForm">
-									<div class="form-group">
-										<label for="category">Category</label> 
-										<input type="text" class="form-control"
-											name="name" ng-model="editValue" required>
-									</div>
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" class="btn btn-primary" ng-disabled="categoryForm.$invalid">{{ title }} Category</button>
 								</form>
 							</div>
 						</section>

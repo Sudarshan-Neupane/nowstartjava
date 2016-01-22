@@ -14,5 +14,7 @@ public interface CategoryService {
 	public void delete(Category category);
 	
 	public void deleteById(Integer id);
+	
+	public void updateCategory(Category category);
 
 }

@@ -1,11 +1,15 @@
 package com.nowstartjava.tutorials.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -26,6 +30,9 @@ public class User {
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@OneToMany(fetch=FetchType.EAGER)
+	private List<Category> categories;
 
 	public int getId() {
 		return id;
@@ -99,8 +106,14 @@ public class User {
 		this.email = email;
 	}
 
-}
+	public List<Category> getCategories() {
+		return categories;
+	}
 
-enum Role {
-	ROLE_USER, ROLE_ADMIN
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+	
+	
+
 }

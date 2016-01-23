@@ -15,7 +15,7 @@ import com.nowstartjava.tutorials.service.UserService;
 
 @Controller
 @RequestMapping(value = "/cms")
-public class UserLogin {
+public class UserLoginController {
 	@Autowired
 	private UserService userservice;
 

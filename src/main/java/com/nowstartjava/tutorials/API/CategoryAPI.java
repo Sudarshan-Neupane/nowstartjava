@@ -28,23 +28,34 @@ public class CategoryAPI {
 	}
 
 	@RequestMapping(value = "/category", method = RequestMethod.POST)
-	public ResponseEntity<Category> postCategory1(
-			@Valid @RequestBody Category category, Model model) {
+	public ResponseEntity<Category> postCategory1(@Valid @RequestBody Category category, Model model) {
 		categoryService.save(category);
 		return new ResponseEntity<Category>(HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Category> deleteCategoryById(
-			@PathVariable("id") Integer id) {
+	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id) {
 		Category cat = categoryService.findOne(id);
-		if(cat == null){
-			 System.out.println("Unable to delete. Category with id " + id + " not found");
-			 return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
+		if (cat == null) {
+			System.out.println("Unable to delete. Category with id " + id + " not found");
+			return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
 		}
 		categoryService.deleteById(id);
 		return new ResponseEntity<Category>(HttpStatus.NO_CONTENT);
 
+	}
+
+	@RequestMapping(value = "/updateCategory/{id}", method = RequestMethod.POST)
+	public ResponseEntity<Category> updateCategory(@PathVariable("id") Integer id,
+			@Valid @RequestBody Category category, Model model) {
+		Category getCategory = categoryService.findOne(id);
+		if (getCategory == null) {
+			System.out.println("Unable to ubdate category " + id + " Not found ");
+			return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
+		}
+		getCategory.setName(category.getName());
+		categoryService.save(getCategory);
+		return new ResponseEntity<Category>(HttpStatus.OK);
 	}
 
 }

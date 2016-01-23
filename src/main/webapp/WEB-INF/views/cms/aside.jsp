@@ -30,6 +30,11 @@
                             class="icon_piechart"></i> <span>Charts</span>
 
                     </a></li>
+                    
+                    <li><a class="" href="${pageContext.servletContext.contextPath}/cms/writers"> <i
+                            class="icon_piechart"></i> <span>Writers</span>
+
+                    </a></li>
 
                     <li class="sub-menu"><a href="javascript:;" class=""> <i
                             class="icon_table"></i> <span>Tables</span> <span

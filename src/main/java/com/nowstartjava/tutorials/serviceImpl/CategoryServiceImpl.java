@@ -42,4 +42,10 @@ public class CategoryServiceImpl implements CategoryService {
 		categoryRepo.delete(id);
 	}
 
+	@Override
+	public void updateCategory(Category category) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

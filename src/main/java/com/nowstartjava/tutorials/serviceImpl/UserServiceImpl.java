@@ -1,8 +1,13 @@
 package com.nowstartjava.tutorials.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.nowstartjava.tutorials.exceptions.UserAlreadyExistsException;
@@ -38,7 +43,25 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User loginUser(String username, String password) {
-		return userRepo.loginUser(username, password);
+		final User user= userRepo.loginUser(username, password) ;
+		if(user != null){
+			//set authorization
+			List<GrantedAuthority> authority= new ArrayList<GrantedAuthority>();
+			GrantedAuthority grantedAuthority= new GrantedAuthority() {
+
+				public String getAuthority() {
+					System.out.println("Awesome--------------- "+user.getRole().toString());
+					return user.getRole().toString();
+				}
+			};
+			authority.add(grantedAuthority);
+			
+			Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), authority);
+
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+			
+		}
+		return user;
 	}
 
 	@Override
@@ -55,8 +78,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User update(Integer userId) {
-		User userToUpdate = userRepo.findOne(userId);
+	public User update(User userToUpdate) {
 		userRepo.save(userToUpdate);
 		return userToUpdate;
 	}

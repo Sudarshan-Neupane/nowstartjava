@@ -60,14 +60,21 @@ public class UserController {
 		
 		Integer userId = mapper.convertValue(node.get("id"), Integer.class);
 		
+		String method = mapper.convertValue(node.get("method"), String.class).trim();
+		
 		User user = mapper.convertValue(node.get("user"), User.class);
 		
-		if(userId != null || userId.intValue() >= 0 ){
+		if(userId != null && userId.intValue() >= 0 ){
 			user.setId(userId);
 		}
 		
 		user.setRole(Role.ROLE_WRITER);
 		user.setCategories(categories);
+		
+		if( method.equalsIgnoreCase("Update")){
+			userService.update(user);
+			return new ResponseEntity<User>(user,HttpStatus.OK);
+		}
 		
 		try{
 			userService.save(user);

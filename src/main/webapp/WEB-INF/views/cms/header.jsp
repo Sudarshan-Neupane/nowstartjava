@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header class="header dark-bg">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips"
@@ -187,9 +188,9 @@
                             <li><a href="#"><i class="icon_clock_alt"></i> Timeline</a>
                             </li>
                             <li><a href="#"><i class="icon_chat_alt"></i> Chats</a></li>
-                            <li><a href="login.html"><i class="icon_key_alt"></i>
+                            <li><a href="<c:url value="/cms/logout" />"><i class="icon_key_alt"></i>
                                     Log Out</a></li>
-                            <li><a href="documentation.html"><i class="icon_key_alt"></i>
+                            <li><a href="#"><i class="icon_key_alt"></i>
                                     Documentation</a></li>
                             <li><a href="documentation.html"><i class="icon_key_alt"></i>
                                     Documentation</a></li>

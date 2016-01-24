@@ -15,7 +15,7 @@ public interface UserService {
 	
 	public void delete(User user);
 	
-	User update(Integer userId);
+	User update(User user);
 	
 	public User loginUser(String username, String password);
 }

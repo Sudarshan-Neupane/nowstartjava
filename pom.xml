@@ -134,6 +134,11 @@
             <version>3.2.5.RELEASE</version>
         </dependency>
         <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>3.2.5.RELEASE</version>
+		</dependency>
+        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${org.aspectj-version}</version>

@@ -12,8 +12,19 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 
 			    });
 				
+				$scope.addWriterForm = function() {
+					$scope.action = "Add ";
+					$scope.id = '';
+					$scope.firstName ='';
+					$scope.lastName = '';
+					$scope.phoneNumber = '';
+					$scope.password = '';
+					$scope.username = '';
+					$scope.message = '';
+					$('#myModal').modal("show");
+				}
+				
 				$scope.addWriter = function(){
-					var userId = $('#userId').val();
 					var categoryIds=$('#category').val();
 					var user = {
 							firstName : $scope.firstName,
@@ -23,7 +34,8 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 							phoneNumber : $scope.phoneNumber,
 					};
 					var dataObj = {
-							id : userId,
+							id : $scope.id,
+							method : $scope.action,
 							user : user,
 							categories : categoryIds,
 						};
@@ -34,9 +46,13 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 							/*$("#userForm").hide();*/
 							$("#myModal").modal("hide");
 							getWriters();
-							$scope.method_update = false;
 							$scope.success = true;
-							$scope.message = "Writer added successfully";
+							if($scope.action == 'Add '){
+								$scope.message = "Writer added successfully";
+							}else{
+								$scope.message = "Writer updated successfully";
+							}
+							
 						});
 						result.error(function(data, status, headers, config) {
 							$scope.failure = true;
@@ -64,9 +80,11 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 					})
 					deleteData.success(function(data, status, header, config) {
 						getWriters();
+						$scope.success = true;
 						$scope.message = "Writer was removed successfully";
 					})
 					deletedata.error(function(data, status, headers, config) {
+						$scope.success = false;
 						$scope.message ="error while data delete";
 					});
 				}
@@ -77,7 +95,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 						url: '/tutorials/cms/writers/get_one/'+id
 					});
 					user.success(function(data,status,header,config) {
-						$scope.method_update = true;
+						$scope.action = "Update ";
 						$scope.id = data.id;
 						$scope.firstName =data.firstName;
 						$scope.lastName = data.lastName;

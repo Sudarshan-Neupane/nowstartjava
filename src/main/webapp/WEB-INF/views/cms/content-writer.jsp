@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html lang="en">
@@ -52,9 +53,12 @@
 					<div class="col-lg-12">
 						<section class="panel">
 							<header class="panel-heading">
-								<span class="em">Content Writer List </span>| <a id="addUserBtn" class="btn btn-info"
-											data-toggle="modal"	data-target="#myModal">Add
+								<span class="em">Content Writer List </span>
+								<security:authorize access="hasRole('ROLE_ADMIN')">
+								| <a id="addUserBtn" class="btn btn-info"
+											ng-click="addWriterForm()">Add
 									Writer</a>
+								</security:authorize>
 							</header>
 							<div ng-if="success" class="alert alert-success"
 								ng-show="message">
@@ -66,7 +70,9 @@
 										<th><i class="icon_profile"></i> S.No</th>
 										<th><i class="icon_profile"></i> Name</th>
 										<th><i class="icon_calendar"></i> Category</th>
-										<th><i class="icon_cogs"></i> Action</th>
+										<security:authorize access="hasRole('ROLE_ADMIN')">
+											<th><i class="icon_cogs"></i> Action</th>
+										</security:authorize>
 									</tr>
 									<tr ng-repeat="writer in writers">
 										<td>{{$index + 1}}</td>										
@@ -74,6 +80,8 @@
 										<td>
 											<li  ng-repeat="category in writer.categories">{{category.name}}</li>
 										</td>
+										
+										<security:authorize access="hasRole('ROLE_ADMIN')">
 										<td>
 											<div class="btn-group">
 												<button type="button" class="btn btn-success"
@@ -84,6 +92,8 @@
 												</button>
 											</div>
 										</td>
+										</security:authorize>
+										
 									</tr>
 								</tbody>
 							</table>
@@ -99,9 +109,7 @@
 								<div class="modal-content">
 									<div class="modal-header" style="padding: 15px 50px">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 ng-if="method_update" class="modal-title">Edit Content Writer</h4>
-										<h4 ng-if="method_update != true" class="modal-title">Add Content Writer</h4>
-									
+										<h4 class="modal-title">{{action}} Content Writer</h4>
 									</div>
 									<div class="modal-body">
 										<div ng-if="failure" class="alert alert-danger"
@@ -176,9 +184,8 @@
 
 											<div class="form-group">
 												<div class="col-lg-offset-4 col-lg-10">
-													<button ng-if="method_update" type="submit" class="btn btn-success">Update</button>
-													<button ng-if="method_update != true" type="submit" class="btn btn-success">Add</button>
-												
+													<button type="submit" class="btn btn-success">{{action}}</button>
+													
 												</div>
 											</div>
 

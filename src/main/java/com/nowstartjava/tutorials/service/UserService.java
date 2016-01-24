@@ -11,7 +11,11 @@ public interface UserService {
 
 	public void save(User user);
 
+	public User delete(Integer userId);
+	
 	public void delete(User user);
+	
+	User update(Integer userId);
 	
 	public User loginUser(String username, String password);
 }

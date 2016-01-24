@@ -49,6 +49,7 @@ public class UserController {
 	public ResponseEntity<User> addWriter(@RequestBody String str) throws JsonProcessingException, IOException{
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(str);
+		
 		ArrayList categoryIds = mapper.convertValue(node.get("categories"), ArrayList.class);
 		List<Category> categories = new ArrayList<Category>();
 		
@@ -56,7 +57,15 @@ public class UserController {
 			Category category = categoryService.findOne(Integer.valueOf((String)id));			
 			categories.add(category);			
 		}
+		
+		Integer userId = mapper.convertValue(node.get("id"), Integer.class);
+		
 		User user = mapper.convertValue(node.get("user"), User.class);
+		
+		if(userId != null || userId.intValue() >= 0 ){
+			user.setId(userId);
+		}
+		
 		user.setRole(Role.ROLE_WRITER);
 		user.setCategories(categories);
 		
@@ -70,9 +79,23 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
-	public void removeWriter(@PathVariable("id")int id){
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
+	public ResponseEntity<User> removeWriter(@PathVariable("id")Integer id){
+		User deletedUser = userService.delete(id);
+		if(deletedUser == null){
+			return new ResponseEntity<User>(deletedUser,HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<User>(deletedUser,HttpStatus.OK);
 		
+	}
+	
+	@RequestMapping(value="/get_one/{id}",method=RequestMethod.GET)
+	public ResponseEntity<User> getUser(@PathVariable("id")Integer id){
+		User updatedUser = userService.findOne(id);
+		if(updatedUser == null){
+			return new ResponseEntity<User>(updatedUser,HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<User>(updatedUser,HttpStatus.OK);
 	}
 
 

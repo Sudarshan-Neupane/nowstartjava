@@ -13,8 +13,8 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 			    });
 				
 				$scope.addWriter = function(){
+					var userId = $('#userId').val();
 					var categoryIds=$('#category').val();
-					alert(categoryIds);
 					var user = {
 							firstName : $scope.firstName,
 							lastName : $scope.lastName,
@@ -23,6 +23,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 							phoneNumber : $scope.phoneNumber,
 					};
 					var dataObj = {
+							id : userId,
 							user : user,
 							categories : categoryIds,
 						};
@@ -30,10 +31,15 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 						var result = $http.post("/tutorials/cms/writers/add", dataObj);
 						/*  */
 						result.success(function(data, status, headers, config) {
-							$("#userForm").hide();
+							/*$("#userForm").hide();*/
+							$("#myModal").modal("hide");
+							getWriters();
+							$scope.method_update = false;
+							$scope.success = true;
 							$scope.message = "Writer added successfully";
 						});
 						result.error(function(data, status, headers, config) {
+							$scope.failure = true;
 							$scope.message = "User with this email already exists.";
 						});
 				}
@@ -46,22 +52,44 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 	                });
 	                writers.success(function(data, status, header, config) {
 	                    $scope.writers = data;
+	                    
 	                });
 				};
 				
-				//Delete Category 
-				$scope.deleteCategory = function(id) {
-					var deletedata = $http({
+				//Delete Writer 
+				$scope.removeWriter = function(id) {
+					var deleteData = $http({
 						method : 'DELETE',
-						url : '/tutorials/deleteCategory/' + id
+						url : '/tutorials/cms/writers/delete/' + id
 					})
-					deletedata.success(function(data, status, header, config) {
-						$location.path('/subjects');
-						var index = $scope.displayCategory.indexOf(id);
-						$scope.displayCategory.splice(index, 1);
+					deleteData.success(function(data, status, header, config) {
+						getWriters();
+						$scope.message = "Writer was removed successfully";
 					})
 					deletedata.error(function(data, status, headers, config) {
-						alert("error while data delete")
+						$scope.message ="error while data delete";
 					});
 				}
+				
+				$scope.getUser = function(id) {
+					var user = $http({
+						method:'GET',
+						url: '/tutorials/cms/writers/get_one/'+id
+					});
+					user.success(function(data,status,header,config) {
+						$scope.method_update = true;
+						$scope.id = data.id;
+						$scope.firstName =data.firstName;
+						$scope.lastName = data.lastName;
+						$scope.phoneNumber = data.phoneNumber;
+						$scope.password = data.password;
+						$scope.username = data.email;
+						
+						$("#myModal").modal("show");
+					});
+				};
+				
+				
 			} ]);
+	
+	

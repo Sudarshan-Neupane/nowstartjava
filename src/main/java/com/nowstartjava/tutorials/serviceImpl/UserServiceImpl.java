@@ -18,8 +18,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User findOne(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepo.findOne(id);
 	}
 
 	@Override
@@ -36,6 +35,19 @@ public class UserServiceImpl implements UserService {
 		userRepo.save(user);
 	}
 
+	
+	@Override
+	public User loginUser(String username, String password) {
+		return userRepo.loginUser(username, password);
+	}
+
+	@Override
+	public User delete(Integer userId) {
+		User userToDelete = userRepo.findOne(userId);
+		userRepo.delete(userId);
+		return userToDelete;
+	}
+
 	@Override
 	public void delete(User user) {
 		// TODO Auto-generated method stub
@@ -43,8 +55,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User loginUser(String username, String password) {
-		// TODO Auto-generated method stub
-		return userRepo.loginUser(username, password);
+	public User update(Integer userId) {
+		User userToUpdate = userRepo.findOne(userId);
+		userRepo.save(userToUpdate);
+		return userToUpdate;
 	}
 }

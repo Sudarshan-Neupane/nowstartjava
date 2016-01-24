@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -31,7 +33,13 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable
+	  (
+	      name="Writer_category",
+	      joinColumns=@JoinColumn(name="writer_id", referencedColumnName="id"),
+	      inverseJoinColumns=@JoinColumn(name="category_id", referencedColumnName="id", unique=false)
+	  )
 	private List<Category> categories;
 
 	public int getId() {

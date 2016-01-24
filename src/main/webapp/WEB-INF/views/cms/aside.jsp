@@ -11,8 +11,7 @@
                     </a>
                         <ul class="sub">
                             <li><a class="" href="${pageContext.servletContext.contextPath}/cms/category"> Category</a></li>
-                            <li><a class="" href="form_validation.html">Form
-                                    Validation</a></li>
+                            <li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li>
                         </ul></li>
                     <li class="sub-menu"><a href="javascript:;" class=""> <i
                             class="icon_desktop"></i> <span>UI Fitures</span> <span

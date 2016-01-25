@@ -32,6 +32,38 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<section class="panel">
+							<header class="panel-heading"> Advanced Table </header>
+							<table class="table table-striped table-advance table-hover">
+								<tbody>
+									<tr>
+										<th><i class="icon_profile"></i> S.No</th>
+										<th><i class="icon_profile"></i> Category</th>
+										<th><i class="icon_pin_alt"></i> User Name</th>
+										<th><i class="icon_mobile"></i> Status</th>
+										<th><i class="icon_cogs"></i> Action</th>
+									</tr>
+									<tr ng-repeat="user in disUser">
+										<td>{{ $index +1 }}</td>
+										<td>
+											<li ng-repeat="cat in user.categories" ng-click="displayTutorial(cat.id)">{{ cat.name }}</li>
+										</td>							
+										<td>{{ user.firstName }}</td>
+										<td>Active</td>
+										<td>
+											<div class="btn-group">
+												<a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a> <a class="btn btn-success" href="#"><i
+													class="icon_check_alt2"></i></a> <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</section>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<section class="panel">
 							<header class="panel-heading"> Form Elements </header>
 							<div class="panel-body">
 								<form class="form-horizontal " method="get">

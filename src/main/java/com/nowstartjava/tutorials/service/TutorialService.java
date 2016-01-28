@@ -17,4 +17,6 @@ public interface TutorialService {
 	public List<Tutorials> findAllByCategoryId(Integer id);
 
 	public Tutorials findOneBySlug(String slug);
+
+	public List<Tutorials> findAllByWriterId(Integer id);
 }

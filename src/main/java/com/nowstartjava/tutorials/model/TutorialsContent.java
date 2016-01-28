@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tutorialscontent")
@@ -18,9 +21,11 @@ public class TutorialsContent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@NotNull
 	private String title;
 	private String image;
 	@Column(name = "description", length = 4000)
+	@NotNull
 	private String description;
 	private Date dateCreated;
 	private int numberOfViewers;

@@ -37,4 +37,14 @@ public class TutorialAPI {
 	public List<Tutorials> getTutorialsByCategory(@PathVariable Integer catId){
 		return tutorialservice.findAllByCategoryId(catId);
 	}
+	
+	//retrieve the tutorials for a particular writer
+	@RequestMapping(value="/tutorials/by_writer/{writerId}",method=RequestMethod.GET)
+	public ResponseEntity<List<Tutorials>> getTutorialsByWriterId(@PathVariable("writerId") Integer id){
+		List<Tutorials> tutorials=tutorialservice.findAllByWriterId(id);
+		if(tutorials == null){
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<Tutorials>>(tutorials,HttpStatus.OK);
+	}
 }

@@ -54,4 +54,9 @@ public class TutorialsServiceImpl implements TutorialService {
 		return tutorialsRepository.findTutorialBySlug(slug);
 	}
 
+	@Override
+	public List<Tutorials> findAllByWriterId(Integer id) {
+		return tutorialsRepository.findTutorialByWriterId(id);
+	}
+
 }

@@ -13,6 +13,8 @@ public interface TutorialContentService {
 
 	public void delete(TutorialsContent tuts);
 	
+	public void delete(Integer id);
+	
 	public List<TutorialsContent> tutorialContentByTutorial(int id);
 
 }

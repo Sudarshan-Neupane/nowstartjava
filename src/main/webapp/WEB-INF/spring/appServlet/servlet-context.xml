@@ -46,5 +46,16 @@
 	</beans:bean>
 	
     <aop:aspectj-autoproxy/>
+    
+    <!-- messges like error, internationalization -->
+	<beans:bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<beans:property name="basenames" value="messages" />
+	</beans:bean>
+	
+	<beans:bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<beans:property name="validationMessageSource" ref="messageSource" />
+	</beans:bean>
 		
 </beans:beans>

@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="user")
 public class User {
@@ -40,6 +43,7 @@ public class User {
 	      joinColumns=@JoinColumn(name="writer_id", referencedColumnName="id"),
 	      inverseJoinColumns=@JoinColumn(name="category_id", referencedColumnName="id", unique=false)
 	  )
+
 	private List<Category> categories;
 
 	public int getId() {

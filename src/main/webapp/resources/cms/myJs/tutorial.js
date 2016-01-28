@@ -27,4 +27,22 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 					$scope.tutorials=data;
 				})
 			}
+			
+			$scope.tutorialsByWriter = function(id) {
+//				alert(id);
+				var displayTuts = $http({
+					method : 'GET',
+					url:'/tutorials/tutorials/by_writer/'+id
+				})
+				displayTuts.success(function(data,status,header,config){
+//					alert(data.title);
+					$scope.tutorials=data;
+					$scope.message ='';
+					$("#myModal").modal("show");
+				})
+				displayTuts.error(function(data,status,header,config){
+					$scope.message = "No tutorials found for that writer";
+					$("#myModal").modal("show");
+				})
+			}
 		} ]);

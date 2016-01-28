@@ -42,4 +42,9 @@ public class TutorialContentServiceImpl implements TutorialContentService {
 		return tutsContentRepo.findTutorialContentByTutorial(id);
 	}
 
+	@Override
+	public void delete(Integer id) {
+		tutsContentRepo.delete(id);
+	}
+
 }

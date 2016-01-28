@@ -38,7 +38,7 @@
 									<tr>
 										<th><i class="icon_profile"></i> S.No</th>
 										<th><i class="icon_profile"></i> Category</th>
-										<th><i class="icon_pin_alt"></i> User Name</th>
+										<th><i class="icon_pin_alt"></i> Content Writer</th>
 										<th><i class="icon_mobile"></i> Status</th>
 										<th><i class="icon_cogs"></i> Action</th>
 									</tr>
@@ -51,8 +51,9 @@
 										<td>Active</td>
 										<td>
 											<div class="btn-group">
-												<a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a> <a class="btn btn-success" href="#"><i
-													class="icon_check_alt2"></i></a> <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+												<a class="btn btn-primary" href="#" ng-click="tutorialsByWriter(user.id)"><i class="icon_plus_alt2"></i></a>
+												 <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a> 
+												 <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
 											</div>
 										</td>
 									</tr>
@@ -93,6 +94,55 @@
 					</div>
 				</div>
 			</section>
+			
+								<!-- dialog -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog modal-sm">
+								<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header" style="padding: 15px 50px">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Tutorials By Content Writer</h4>
+							</div>
+							<table class="table table-striped table-advance table-hover">
+								<tbody>
+									<tr>
+										<th><i class="icon_profile"></i> S.No</th>
+										<th><i class="icon_profile"></i> Title</th>
+										<th><i class="icon_calendar"></i> Description</th>
+										<security:authorize access="hasRole('ROLE_ADMIN')">
+											<th><i class="icon_cogs"></i> Action</th>
+										</security:authorize>
+									</tr>
+									<tr ng-repeat="tutorial in tutorials">
+										<td>{{$index + 1}}</td>
+										<td>{{tutorial.title}}</td>
+										<td>{{tutorial.description}}</td>
+										<td>
+											<div class="btn-group">
+												<a href="<c:url value='contents/{{tutorial.id}}'/>" class="btn btn-success"
+												>Content</a>
+												<button type="button" class="btn btn-success"
+												ng-click="#">Edit</button>
+												<button type="button" class="btn btn-danger"
+													ng-click="#">
+													<span class="gicon_check_alt2"></span>Delete
+												</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						</div>
+					</div>
+					<!-- dialog -->
+			
 		</section>
 		<!--main content end-->
 	</section>

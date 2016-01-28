@@ -20,4 +20,8 @@ public interface TutorialRepository extends JpaRepository<Tutorials, Integer> {
 	@Query("SELECT t FROM Tutorials t WHERE t.slug=?1")
 	public Tutorials findTutorialBySlug(String slug);
 
+	@Query("select t from User u left join u.categories c left join c.tutorials t where u.id=?1")
+	public List<Tutorials> findTutorialByWriterId(Integer id);
+
 }
+

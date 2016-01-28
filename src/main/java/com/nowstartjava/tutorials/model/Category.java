@@ -2,6 +2,7 @@ package com.nowstartjava.tutorials.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity @JsonIgnoreProperties({"tutorials"})
 @Table(name = "category")
 public class Category {
 	@Id
@@ -21,7 +24,7 @@ public class Category {
 	@NotNull(message = "name should not be null")
 	private String name;
 	// one to many for tutorials
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="category")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="category")
 	private List<Tutorials> tutorials;
 
 	public int getId() {

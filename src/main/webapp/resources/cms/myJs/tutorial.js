@@ -28,6 +28,8 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 				})
 			}
 			
+			
+			//get tutorials for given writer
 			$scope.tutorialsByWriter = function(id) {
 //				alert(id);
 				var displayTuts = $http({
@@ -44,5 +46,31 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 					$scope.message = "No tutorials found for that writer";
 					$("#myModal").modal("show");
 				})
+			}
+			
+			$scope.deleteTutorial = function(item) {
+				var deleteTut =$http( {
+						method : 'GET',
+						url:'/tutorials/cms/tutorials/delete/'+item.id
+				})
+				deleteTut.success(function(data,status,header,config){
+					$scope.message = "Deleted Successfully";
+					var index = $scope.tutorials.indexOf(item);
+					$scope.tutorials.splice(index,1);
+				})		 
+			}
+			
+			$scope.editTutorial = function(tutorial) {
+				$("#myModal").modal('hide');
+				
+				$scope.tutorial = tutorial;
+				CKEDITOR.instances.desText.setData(tutorial.description);
+				
+				$("#tutorialForm").show();
+		        e.preventDefault();
+
+		        $("body, html").animate({ 
+		            scrollTop: $( $(this) ).offset().top 
+		        }, 100);
 			}
 		} ]);

@@ -17,4 +17,6 @@ public interface TutorialContentService {
 	
 	public List<TutorialsContent> tutorialContentByTutorial(int id);
 
+	public void update(TutorialsContent tutorialContent);
+
 }

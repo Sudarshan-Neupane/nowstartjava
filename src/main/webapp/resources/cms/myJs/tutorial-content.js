@@ -8,7 +8,7 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 			}
 			
 			$scope.deleteTutorialContentConfirm = function() {
-				alert($scope.contentId);
+//				alert($scope.contentId);
 				var displayTuts = $http({
 					method : 'GET',
 					url:'/tutorials/cms/contents/delete/'+$scope.contentId
@@ -17,5 +17,23 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 					$("#myModal").modal("hide");
 					$("#main-content-"+$scope.contentId).parent().remove();
 				})				
+			}
+			
+			$scope.update=false;
+			$scope.updateTutorialContent = function(id) {
+//				alert(id);
+				var displayTuts = $http({
+					method : 'GET',
+					url:'/tutorials/api/content/displayDetails/'+id
+				})
+				displayTuts.success(function(data,status,header,config){
+					$scope.tutorialContent = data;
+					CKEDITOR.instances.desText.setData(data.description);
+					var element = document.getElementById("updateTab");
+					$scope.update = true;
+					element.click();			
+					
+				})
+				
 			}
 		} ]);

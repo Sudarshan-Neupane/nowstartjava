@@ -28,10 +28,11 @@
 						<h3 class="page-header">
 							<i class="fa fa-file-text-o"></i> Tutorial
 						</h3>
-						<ul class="nav nav-tabs">
+						<ul class="nav nav-tabs" id="tabs">
 							<li><a data-toggle="tab" href="#home">Home</a></li>
 							<li class="active"><a data-toggle="tab" href="#contents">Contents</a></li>
 							<li><a data-toggle="tab" href="#addContent">Add Content</a></li>
+							<li><a id="updateTab" ng-show="update" data-toggle="tab" href="#updateContent">Update Content</a></li>
 						</ul>
 					</div>
 				</div>
@@ -52,7 +53,7 @@
 													<div class="deleteimage" id="${content.id}" ng-click="deleteTutorialContent(${content.id})">
 														<img src="<c:url value="/resources/images/delete.png" />">
 													</div>
-													<div class="update-question" id="${content.id}">
+													<div class="update-question" id="${content.id}" ng-click="updateTutorialContent(${content.id})">
 														<img src="<c:url value="/resources/images/edit.png" />">
 													</div>
 												</security:authorize>
@@ -113,7 +114,43 @@
 							</section>
 					</div>
 				</div>
-				<!-- end of add content form div -->
+				<!-- end of  content form div -->
+				
+				<!-- update content form div -->
+				<div class="tab-pane fade row" id="updateContent">
+					<div class="col-lg-12">
+						<section class="panel">
+							<header class="panel-heading"> Update Tutorial Content </header>
+								<div class="panel-body">
+									<form action="update" class="form-horizontal " method="post">
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Title </label>
+											<div class="col-sm-10">
+												<input type="hidden" name="id" value="{{tutorialContent.id}}">
+												<input type="hidden" name="tutorials.id" value="{{tutorialContent.tutorials.id}}">												
+												<input type="text" ng-model="tutorialContent.title" class="form-control" name="title">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-sm-2">Description </label>
+											<div class="col-sm-10">
+												<textarea id="desText" class="form-control ckeditor" name="description" rows="6">
+												
+												</textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+											<input type="hidden" name="tutorials.id" value="${tutorialId}">
+												<button type="submit" class="btn btn-default">Submit</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</section>
+					</div>
+				</div>
+				<!-- end of update content form div -->
 				
 				</div>
 				<!-- end of tab div -->

@@ -2,15 +2,6 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 	app.controller('submitWriter', [ '$scope', '$http', '$location',
 			'$route',
 			function($scope, $http, $location, $route) {
-				$("#addUserBtn").on("click", function( e ) {
-					$("#userForm").show();
-			        e.preventDefault();
-
-			        $("body, html").animate({ 
-			            scrollTop: $( $(this).attr('href') ).offset().top 
-			        }, 100);
-
-			    });
 				
 				$scope.addWriterForm = function() {
 					$scope.action = "Add ";

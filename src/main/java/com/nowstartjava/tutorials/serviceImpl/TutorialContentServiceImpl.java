@@ -1,5 +1,6 @@
 package com.nowstartjava.tutorials.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ public class TutorialContentServiceImpl implements TutorialContentService {
 
 	@Override
 	public TutorialsContent findOne(int id) {
-		// TODO Auto-generated method stub
 		return tutsContentRepo.findOne(id);
 	}
 
@@ -45,6 +45,15 @@ public class TutorialContentServiceImpl implements TutorialContentService {
 	@Override
 	public void delete(Integer id) {
 		tutsContentRepo.delete(id);
+	}
+
+	@Override
+	public void update(TutorialsContent tutorialContent) {
+		TutorialsContent oldTutorialContent = tutsContentRepo.findOne(tutorialContent.getId());
+		oldTutorialContent.setDateCreated(new Date());
+		oldTutorialContent.setDescription(tutorialContent.getDescription());
+		oldTutorialContent.setTitle(tutorialContent.getTitle());
+		tutsContentRepo.save(oldTutorialContent);
 	}
 
 }

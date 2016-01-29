@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.nowstartjava.tutorials.model.Tutorials;
 import com.nowstartjava.tutorials.model.TutorialsContent;
 import com.nowstartjava.tutorials.service.TutorialContentService;
 
@@ -44,9 +41,12 @@ public class TutorialContentController {
 		return new ResponseEntity<TutorialsContent>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/update",method=RequestMethod.GET)
+	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String addTutorialContent(@ModelAttribute("tutorialContent") TutorialsContent tutorialContent){
-		return "addTutorialContent";
+		int tutorialId = tutorialContent.getTutorials().getId();
+		
+		tutorialContentService.update(tutorialContent);
+		return "redirect:/cms/contents/"+tutorialId;
 	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.POST)

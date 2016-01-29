@@ -1,5 +1,6 @@
 package com.nowstartjava.tutorials.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,20 @@ public class TutorialsServiceImpl implements TutorialService {
 	@Override
 	public List<Tutorials> findAllByWriterId(Integer id) {
 		return tutorialsRepository.findTutorialByWriterId(id);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		tutorialsRepository.delete(id);
+	}
+
+	@Override
+	public void update(Tutorials tutorial) {
+		Tutorials oldTutorial = tutorialsRepository.findOne(tutorial.getId());
+		oldTutorial.setDateCreated(new Date());
+		oldTutorial.setDescription(tutorial.getDescription());
+		oldTutorial.setTitle(tutorial.getTitle());
+		tutorialsRepository.save(oldTutorial);
 	}
 
 }

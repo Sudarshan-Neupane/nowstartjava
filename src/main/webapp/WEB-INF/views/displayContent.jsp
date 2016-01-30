@@ -4,7 +4,7 @@
 <script src="<c:url value="/resources/js/prettify.js"/>"></script>
 <link href="${pageContext.request.contextPath}/resources/css/prettify.css" rel="stylesheet" type="text/css" />
 <div ng-app="displayContent">
-	<div ng-init="slugid = ${slugToid}">
+	<div ng-init="slugid = ${slugToid.id}">
 		<div class="row" ng-controller="content">
 			<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3">
 				<div class="panel panel-danger">
@@ -16,16 +16,19 @@
 					<ul class="list-group">
 						<li class="list-group-item list-group-item-success categoryList" ng-repeat="n in disContent"><input
 							type="radio" name="category" class="radio-primary" ng-click="selectTutorialContent(n.id)"> {{n.title}}</li>
-						<li class="list-group-item list-group-item-success categoryList" ng-show="!disContent.length">Tutorial on
-							this topic will be uploaded soon!!</li>
+						<li class="list-group-item list-group-item-success categoryList" ng-show="!disContent.length">This page is
+							under construction !!</li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-xs-7 col-md-7 col-sm-7 col-lg-7">
 				<div class="panel panel-success" style="margin-bottom: 5px;">
-					<div class="panel-heading">
-						<a href="#">{{displayDetails.tutorials.category.name }} >> {{displayDetails.tutorials.title }} >>
-							{{displayDetails.title }}</a>
+					<div ng-if="!displayDetails.tutorials.category.name" class="panel-heading">
+						<strong>${slugToid.title }</strong>
+					</div>
+					<div ng-if="displayDetails.tutorials.category.name" class="panel-heading">
+						<a href="#"><strong>{{displayDetails.tutorials.category.name }} >> {{displayDetails.tutorials.title }} >>
+							{{displayDetails.title }} </strong></a>
 					</div>
 				</div>
 				<div class="panel panel-danger">
@@ -35,23 +38,10 @@
 					</div>
 					<div class="panel-body">
 						{{ displayDetails.description }}
-						<hr>
-						<pre class="prettyprint linenums:1">
-							method override(){
-							system.out.println("this is me sudarshan");
-							}
-							
-							method override(){
-							system.out.println("this is me sudarshan");
-							}
-							method override(){
-							system.out.println("this is me sudarshan");
-							}
-							
-							method override(){
-							system.out.println("this is me sudarshan");
-							}
-							</pre>
+						<!-- 
+						defaulat content dispaly Here
+						-->
+						<div ng-show="!displayDetails">${slugToid.description }</div>						
 					</div>
 				</div>
 			</div>

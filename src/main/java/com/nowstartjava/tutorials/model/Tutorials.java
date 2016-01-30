@@ -1,5 +1,6 @@
 package com.nowstartjava.tutorials.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
@@ -17,7 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tutorials")
-public class Tutorials {
+public class Tutorials implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -114,6 +119,11 @@ public class Tutorials {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	@Override
+	public String toString(){
+		return id+" "+title+" "+description;
 	}
 
 }

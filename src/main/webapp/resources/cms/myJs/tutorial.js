@@ -30,11 +30,13 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 			
 			
 			//get tutorials for given writer
-			$scope.tutorialsByWriter = function(id) {
+			$scope.tutorialsByWriter = function(user) {
 //				alert(id);
+				$scope.categoryForWriter = user.categories;
+//				alert($scope.categoryForWriter[0].name);
 				var displayTuts = $http({
 					method : 'GET',
-					url:'/tutorials/tutorials/by_writer/'+id
+					url:'/tutorials/tutorials/by_writer/'+user.id
 				})
 				displayTuts.success(function(data,status,header,config){
 //					alert(data.title);
@@ -48,29 +50,73 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 				})
 			}
 			
+			$scope.deleted=false;
 			$scope.deleteTutorial = function(item) {
 				var deleteTut =$http( {
 						method : 'GET',
 						url:'/tutorials/cms/tutorials/delete/'+item.id
 				})
 				deleteTut.success(function(data,status,header,config){
+					$scope.deleted = true;
 					$scope.message = "Deleted Successfully";
 					var index = $scope.tutorials.indexOf(item);
 					$scope.tutorials.splice(index,1);
 				})		 
 			}
 			
+			$scope.edit = false;
 			$scope.editTutorial = function(tutorial) {
-				$("#myModal").modal('hide');
-				
+//				alert(tutorial.id);
+				$scope.edit = true;
+				$scope.add = false;
 				$scope.tutorial = tutorial;
 				CKEDITOR.instances.desText.setData(tutorial.description);
-				
-				$("#tutorialForm").show();
-		        e.preventDefault();
-
-		        $("body, html").animate({ 
-		            scrollTop: $( $(this) ).offset().top 
-		        }, 100);
+				$("#myModal").modal("hide");
 			}
+			
+			$scope.edited = false;
+			$scope.editTutorialSubmit = function() {
+				var tutorial = $scope.tutorial;
+				var value = CKEDITOR.instances.desText.getData();
+				tutorial.description = value;
+//				alert(tutorial.description);
+				var tutorialSubmit = $http.post('/tutorials/cms/tutorials/update/',tutorial);
+				
+				tutorialSubmit.success(function(data, status, headers, config) {
+					$scope.message = "Updated Successfully!!!";
+					$scope.edited = true;
+					$scope.edit = false;
+				});
+			}
+			
+			$scope.add = false;
+			$scope.addTutorial = function() {
+				$scope.add = true;
+				$scope.edit = false;
+				$scope.tutorial = null;
+				$("#myModal").modal("hide");
+			}
+			
+			$scope.added =false;
+			$scope.error = false;
+			$scope.addTutorialSubmit = function() {
+				var value = CKEDITOR.instances.addDesText.getData();
+				var tutorial = $scope.tutorial;
+				tutorial.description = value;
+//				alert(tutorial.description);
+				var tutorialSubmit = $http.post('/tutorials/cms/tutorials/add/',tutorial);
+				
+				tutorialSubmit.success(function(data, status, headers, config) {
+					$scope.message = "Added Successfully!!!";
+					$scope.added = true;
+					$scope.edit = false;
+					$scope.add = false;
+				});
+				
+				tutorialSubmit.error(function(data, status, headers, config) {
+					$scope.message = "Added not successful!!!";
+					$scope.error=true;
+				});
+			}
+			
 		} ]);

@@ -5,7 +5,8 @@
 <div ng-app ="myapp">
 <div class="row" ng-controller="category">
 
-			<div class="col-xs-7 col-md-7 col-sm-7 col-lg-3">
+			<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3">
+			<div style="position:fixed; margin-top: -15px;">
 				<div class="panel panel-primary">
 					<div id="divTotal" class="panel-heading">
 						<h3 class="panel-title">Filter</h3>
@@ -20,6 +21,7 @@
 							ng-click="selectCategory(n.id)"> {{n.name}}</li>
 					</ul>
 
+				</div>
 				</div>
 			</div>
 

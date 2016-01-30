@@ -26,12 +26,14 @@
 	<!-- the more specific rules need to come first, followed by the more general ones. -->
 	<!-- COMmENT out the following to see @Service METHOD level authorization -->
 	
-	<security:intercept-url pattern="/cms/writers" access="hasAnyRole('ROLE_ADMIN','ROLE_WRITER')" />  	
+	<security:intercept-url pattern="/cms/contents/**" access="hasAnyRole('ROLE_ADMIN','ROLE_WRITER')" />
+	<security:intercept-url pattern="/cms/writers/**" access="hasAnyRole('ROLE_ADMIN','ROLE_WRITER')" />
+	<security:intercept-url pattern="/cms/tutorials/**" access="hasAnyRole('ROLE_ADMIN','ROLE_WRITER')" />
+	<security:intercept-url pattern="/cms/*" access="isAuthenticated()" />
+	
 	  
 		<!-- always-use-default-target overrides where login was triggered -->
-		<!-- logout-url renames j_security_logout URL -->
-		<!-- similarly username,password,Login-processing  renames j_security_* stuff -->
-		<!-- e.g., /j_spring_security_check is default login-processing-url-->
+		
 <!-- Comment out login-page through logoinfailed for BASIC -->
 <!-- login-processing-url="/doLogin" default-target-url="/postLogin" -->
  		<security:form-login  login-page="/cms" />
@@ -53,19 +55,8 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 
-
-	<!-- <security:authentication-manager>
-		<security:authentication-provider>
-			<password-encoder hash="bcrypt" />
-			<security:user-service>
-				<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
-				<security:user name="guest" password="guest" authorities="ROLE_USER" />
-			</security:user-service>
-		</security:authentication-provider>
-	</security:authentication-manager> -->
-	
 	<bean id="accessDeniedHandler"
      class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-  <property name="errorPage" value="/accessDenied.htm"/>
+  <property name="errorPage" value="/error-fobidden"/>
 </bean>
 </beans>

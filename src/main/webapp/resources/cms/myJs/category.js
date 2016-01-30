@@ -42,15 +42,16 @@ app.controller('submitCategory', [ '$scope', '$http', '$location', '$route',
 			;
 
 			// Delete Category
-			$scope.deleteCategory = function(id) {
+			$scope.deleteCategory = function(category) {
 				var deletedata = $http({
 					method : 'DELETE',
-					url : '/tutorials/deleteCategory/' + id
+					url : '/tutorials/deleteCategory/' + category.id
 				})
 				deletedata.success(function(data, status, header, config) {
 					$location.path('/subjects');
-					var index = $scope.displayCategory.indexOf(id);
+					var index = $scope.displayCategory.indexOf(category);
 					$scope.displayCategory.splice(index, 1);
+					
 				})
 				deletedata.error(function(data, status, headers, config) {
 					alert("error while data delete")

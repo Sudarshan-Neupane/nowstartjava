@@ -1,3 +1,5 @@
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
@@ -10,7 +12,9 @@
                             class="menu-arrow arrow_carrot-right"></span>
                     </a>
                         <ul class="sub">
+                            <security:authorize access="hasRole('ROLE_ADMIN')">
                             <li><a class="" href="${pageContext.servletContext.contextPath}/cms/category"> Category</a></li>
+                            </security:authorize>
                             <li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li>
                         </ul></li>
                     <li class="sub-menu"><a href="javascript:;" class=""> <i

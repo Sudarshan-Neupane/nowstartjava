@@ -2,8 +2,10 @@ package com.nowstartjava.tutorials.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,12 +14,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tutorials")
+@Table(name = "tutorials") @JsonIgnoreProperties({"tutorialsContents"})
 public class Tutorials implements Serializable{
 	/**
 	 * 
@@ -39,6 +42,9 @@ public class Tutorials implements Serializable{
 	@JoinColumn(name = "categoryId")
 	private Category category;
 
+	@OneToMany(cascade=CascadeType.REMOVE,mappedBy="tutorials")
+	private List<TutorialsContent> tutorialsContents;
+	
 	public int getId() {
 		return id;
 	}
@@ -126,4 +132,12 @@ public class Tutorials implements Serializable{
 		return id+" "+title+" "+description;
 	}
 
+	public List<TutorialsContent> getTutorialsContents() {
+		return tutorialsContents;
+	}
+
+	public void setTutorialsContents(List<TutorialsContent> tutorialsContents) {
+		this.tutorialsContents = tutorialsContents;
+	}
+	
 }

@@ -174,7 +174,7 @@
 												<div class="col-sm-6">
 													<select required="required" id="category"
 														ng-model="category" multiple="multiple"
-														class="cp2 form-control">
+														class="cp2 form-control">														
 														<c:forEach items="${categories}" var="category">
 															<option value="${category.id}">${category.name}</option>
 														</c:forEach>

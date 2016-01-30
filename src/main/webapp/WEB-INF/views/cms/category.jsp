@@ -63,13 +63,13 @@
 										<th><i class="icon_calendar"></i> Category</th>
 										<th><i class="icon_cogs"></i> Action</th>
 									</tr>
-									<tr ng-repeat="category in displayCategory">
+									<tr ng-repeat="category in displayCategory track by $index">
 										<td>{{$index + 1}}</td>
 										<td>{{ category.name }}</td>
 										<td>
 											<div class="btn-group">
 												<button type="button" class="btn btn-success" ng-click="editCategory(category.name,category.id);">Edit</button>
-												<button type="button" class="btn btn-danger" ng-click="deleteCategory(category.id) ">
+												<button type="button" class="btn btn-danger" ng-click="deleteCategory(category) ">
 													<span class="gicon_check_alt2"></span>Delete
 												</button>
 											</div>

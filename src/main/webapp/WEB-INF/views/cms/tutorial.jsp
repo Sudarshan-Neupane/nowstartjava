@@ -46,7 +46,7 @@
 								<strong>{{message }}</strong>
 							</div>
 							
-							<table class="table table-striped table-advance table-hover">
+							<table class="table table-striped table-advance table-hover"  ng-init=" currentUser = ${loginUser.id}">
 								<tbody>
 									<tr>
 										<th><i class="icon_profile"></i> S.No</th>
@@ -63,7 +63,8 @@
 										</td>
 										<td>{{ user.firstName }}</td>
 										<td>Active</td>
-										<td>
+										
+										<td ng-if = "currentUser == user.id ">
 											<div class="btn-group">
 												<a id="allTuts" class="btn btn-primary"
 													href="#" ng-click="tutorialsByWriter(user)"><i
@@ -89,14 +90,10 @@
 								<h4 class="modal-title">Tutorials By Content Writer
 								|<a href="#" ng-click="addTutorial()" > Add Tutorial</a></h4>
 							</div>
-							<div ng-if="deleted" class="alert alert-success"
-								ng-show="message">
-								<strong>{{message }}</strong>
+							<div ng-show="deleted" class="alert alert-success">
+								<strong>{{delMessage }}</strong>
 							</div>
-							<div ng-if="error" class="alert alert-danger"
-								ng-show="error">
-								<strong>{{error }}</strong>
-							</div>
+							
 							<table class="table table-striped table-advance table-hover">
 								<tbody>
 									<tr>
@@ -186,6 +183,7 @@
 										<label class="control-label col-lg-2" for="inputSuccess">Category</label>
 										<div class="col-lg-10">
 											<select class="form-control m-bot15" ng-model="tutorial.category.id">
+												<option value="">- Choose Cateogry -</option>
 												<option ng-repeat="category in categoryForWriter" value="{{category.id}}">{{ category.name }}</option>
 											</select>
 										</div>

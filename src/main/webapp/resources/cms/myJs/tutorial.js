@@ -58,7 +58,7 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 				})
 				deleteTut.success(function(data,status,header,config){
 					$scope.deleted = true;
-					$scope.message = "Deleted Successfully";
+					$scope.delMessage = "Deleted Successfully";
 					var index = $scope.tutorials.indexOf(item);
 					$scope.tutorials.splice(index,1);
 				})		 
@@ -98,7 +98,6 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 			}
 			
 			$scope.added =false;
-			$scope.error = false;
 			$scope.addTutorialSubmit = function() {
 				var value = CKEDITOR.instances.addDesText.getData();
 				var tutorial = $scope.tutorial;
@@ -115,7 +114,6 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 				
 				tutorialSubmit.error(function(data, status, headers, config) {
 					$scope.message = "Added not successful!!!";
-					$scope.error=true;
 				});
 			}
 			

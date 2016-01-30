@@ -24,7 +24,7 @@ public class Category {
 	@NotNull(message = "name should not be null")
 	private String name;
 	// one to many for tutorials
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="category")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="category",cascade=CascadeType.REMOVE)
 	private List<Tutorials> tutorials;
 
 	public int getId() {

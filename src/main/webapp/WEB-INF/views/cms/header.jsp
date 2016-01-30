@@ -8,7 +8,7 @@
             </div>
 
             <!--logo start-->
-            <a href="/cms/dashboard" class="logo">Now<span class="lite">Admin</span></a>
+            <a href="${pageContext.servletContext.contextPath}/cms/loginsuccess" class="logo">Now<span class="lite">Start Java</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">

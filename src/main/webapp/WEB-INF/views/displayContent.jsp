@@ -27,8 +27,8 @@
 						<strong>${slugToid.title }</strong>
 					</div>
 					<div ng-if="displayDetails.tutorials.category.name" class="panel-heading">
-						<a href="#"><strong>{{displayDetails.tutorials.category.name }} >> {{displayDetails.tutorials.title }} >>
-							{{displayDetails.title }} </strong></a>
+						<a href="#"><strong>{{displayDetails.tutorials.category.name }} >> {{displayDetails.tutorials.title
+								}} >> {{displayDetails.title }} </strong></a>
 					</div>
 				</div>
 				<div class="panel panel-danger">
@@ -41,7 +41,7 @@
 						<!-- 
 						defaulat content dispaly Here
 						-->
-						<div ng-show="!displayDetails">${slugToid.description }</div>						
+						<div ng-show="!displayDetails">${slugToid.description }</div>
 					</div>
 				</div>
 			</div>

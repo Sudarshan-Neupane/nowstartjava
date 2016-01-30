@@ -1,65 +1,23 @@
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu">
-                    <li class="active"><a class="" href="index.html"> <i
-                            class="glyphicon glyphicon-th-large"></i> <span>Dashboard</span>
-                    </a></li>
-                    <li class="sub-menu"><a href="javascript:;" class=""> <i
-                            class="glyphicon glyphicon-th-list"></i> <span> Menu </span> <span
-                            class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                        <ul class="sub">
-                            <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <li><a class="" href="${pageContext.servletContext.contextPath}/cms/category"> Category</a></li>
-                            </security:authorize>
-                            <li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li>
-                        </ul></li>
-                    <li class="sub-menu"><a href="javascript:;" class=""> <i
-                            class="icon_desktop"></i> <span>UI Fitures</span> <span
-                            class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                        <ul class="sub">
-                            <li><a class="" href="general.html">Elements</a></li>
-                            <li><a class="" href="buttons.html">Buttons</a></li>
-                            <li><a class="" href="grids.html">Grids</a></li>
-                        </ul></li>
-                    <li><a class="" href="widgets.html"> <i
-                            class="icon_genius"></i> <span>Widgets</span>
-                    </a></li>
-                    <li><a class="" href="chart-chartjs.html"> <i
-                            class="icon_piechart"></i> <span>Charts</span>
-
-                    </a></li>
-                    
-                    <li><a class="" href="${pageContext.servletContext.contextPath}/cms/writers"> <i
-                            class="icon_piechart"></i> <span>Writers</span>
-
-                    </a></li>
-
-                    <li class="sub-menu"><a href="javascript:;" class=""> <i
-                            class="icon_table"></i> <span>Tables</span> <span
-                            class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                        <ul class="sub">
-                            <li><a class="" href="basic_table.html">Basic Table</a></li>
-                        </ul></li>
-
-                    <li class="sub-menu"><a href="javascript:;" class=""> <i
-                            class="icon_documents_alt"></i> <span>Pages</span> <span
-                            class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                        <ul class="sub">
-                            <li><a class="" href="profile.html">Profile</a></li>
-                            <li><a class="" href="login.html"><span>Login
-                                        Page</span></a></li>
-                            <li><a class="" href="blank.html">Blank Page</a></li>
-                            <li><a class="" href="404.html">404 Error</a></li>
-                        </ul></li>
-
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+	<div id="sidebar" class="nav-collapse ">
+		<!-- sidebar menu start-->
+		<ul class="sidebar-menu">
+			<li class="active"><a class="" href="${pageContext.servletContext.contextPath}/cms/loginsuccess"> <i class="glyphicon glyphicon-th-large"></i> <span>Dashboard</span>
+			</a></li>
+			<li class="sub-menu"><a href="javascript:;" class=""> <i class="glyphicon glyphicon-th-list"></i> <span>
+						Menu </span> <span class="menu-arrow arrow_carrot-right"></span>
+			</a>
+				<ul class="sub">
+					<security:authorize access="hasRole('ROLE_ADMIN')">
+						<li><a class="" href="${pageContext.servletContext.contextPath}/cms/category"> Category</a></li>
+					</security:authorize>
+					<li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li>
+				</ul></li>
+			<li><a class="" href="${pageContext.servletContext.contextPath}/cms/writers"> <i class="icon_piechart"></i>
+					<span>Writers</span>
+			</a></li>
+		</ul>
+		<!-- sidebar menu end-->
+	</div>
+</aside>

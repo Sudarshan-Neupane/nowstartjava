@@ -8,7 +8,7 @@
 			<div class="col-lg-5">
 				<a href="<c:url value="/${object.argument}" />"> <img alt="company logo"
 					src="<c:url value="/resources/images/logo.png" />">
-				</a><span class="main-heading">Digestive Java</span>
+				</a><span class="main-heading">Now Start Java</span>
 			</div>
 			<div class="col-lg-7">
 				<div class="menuBar">

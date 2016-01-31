@@ -8,7 +8,7 @@
 			<div class="nav-header col-lg-5">
 				<a class="nav-bar" href="<c:url value="/${object.argument}" />"> <img alt="company logo"
 					src="<c:url value="/resources/images/logo.png" />">
-				</a><span class="nav-bar"><img alt="company logo"
+				</a><span class="nav-bar"><img alt="company logo"  style="height: 50px;width: 350px"
 					src="<c:url value="/resources/images/slogan.png" />"></span>
 			</div>
 			<div class="col-lg-7">

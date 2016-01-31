@@ -38,18 +38,16 @@
 
 
 	<div class="container">
-		<div class="header">
-			<div>
-				<tiles:insertAttribute name="navigation" />
-			</div>
+		<div>
+			<tiles:insertAttribute name="navigation" />
 		</div>
-		
-		
+
+
 		<div class="mainContent">
-		
+
 			<tiles:insertAttribute name="body" />
-		</div>			
-		
+		</div>
+
 		<div class="footer">
 			<tiles:insertAttribute name="footer" />
 		</div>

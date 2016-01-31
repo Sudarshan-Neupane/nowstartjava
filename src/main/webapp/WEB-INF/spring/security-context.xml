@@ -17,8 +17,6 @@
 <!-- use-expressions enables URL level authorization -->
 	<security:http use-expressions="true" auto-config="true">
 	
-	
-	
 	<!-- Need to redirect exception for web authorization -->
 	<security:access-denied-handler error-page="/error-forbidden" />
 	
@@ -30,20 +28,18 @@
 	<security:intercept-url pattern="/cms/writers/**" access="hasAnyRole('ROLE_ADMIN','ROLE_WRITER')" />
 	<security:intercept-url pattern="/cms/tutorials/**" access="hasAnyRole('ROLE_ADMIN','ROLE_WRITER')" />
 	<security:intercept-url pattern="/cms/*" access="isAuthenticated()" />
-	
-	  
+	 
 		<!-- always-use-default-target overrides where login was triggered -->
 		
 <!-- Comment out login-page through logoinfailed for BASIC -->
 <!-- login-processing-url="/doLogin" default-target-url="/postLogin" -->
- 		<security:form-login  login-page="/cms" />
-         <security:logout logout-success-url="/logout"  logout-url= "/doLogout"/>
-        
-		<!-- BY DEFAULT the URL /j_spring_security_logout triggers logout 
-		NOTE: is it JUST a URL naming convention - no mapping is required
-				logout-url= "/doLogout" REPLACES it -->
+ 		<security:form-login  login-page="/cms" authentication-failure-url="/cms" />
+         <security:logout logout-success-url="/cms" invalidate-session="true"  logout-url= "/cms/logout"/>
+
+	<!-- BY DEFAULT the URL /j_spring_security_logout triggers logout NOTE: 
+		is it JUST a URL naming convention - no mapping is required logout-url= "/doLogout" 
+		REPLACES it -->
 	</security:http>
-	
 
 	<security:authentication-manager>
 		<security:authentication-provider>

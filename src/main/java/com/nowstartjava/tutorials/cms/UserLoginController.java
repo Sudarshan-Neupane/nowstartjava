@@ -28,6 +28,7 @@ public class UserLoginController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String verifylogin(@RequestParam String username,
 			 @RequestParam String password,HttpSession session,Model model) {
+		System.out.println(username+" "+password+"----------------------------");
 		User user = userservice.loginUser(username, password);
 		if(user == null){
 			model.addAttribute("loginError", "Invalid UserName or password.");

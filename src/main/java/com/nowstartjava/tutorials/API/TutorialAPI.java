@@ -43,6 +43,7 @@ public class TutorialAPI {
 	public ResponseEntity<List<Tutorials>> getTutorialsByWriterId(@PathVariable("writerId") Integer id){
 		List<Tutorials> tutorials=tutorialservice.findAllByWriterId(id);
 		if(tutorials == null){
+			System.out.println("No tutorial found.");
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<Tutorials>>(tutorials,HttpStatus.OK);

@@ -117,6 +117,7 @@
 											<strong>{{message }}</strong>
 										</div>
 										<form class="form-horizontal" ng-submit="addWriter()">
+											<security:csrfInput/>
 											<!--date picker start-->
 											<input type="hidden" ng-model="id">
 											<div class="form-group">
@@ -201,83 +202,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- dialog -->
-
-
-					<%-- 					<div id="userForm" class="col-lg-6" style="display: none;">
-						<section class="panel">
-							<header class="panel-heading"> Add Writer </header>
-							<div class="panel-body">
-								<form class="form-horizontal" ng-submit="addWriter()">
-                                          <!--date picker start-->
-
-                                          <div class="form-group">
-                                              <label class="control-label col-sm-4">First Name</label>
-                                              <div class="col-sm-6">
-                                                  <input id="firstName" ng-model="firstName" type="text" placeholder="First name" size="16" class="form-control">
-                                              </div>
-                                          </div>
-                                          <div class="form-group">
-                                              <label class="control-label col-sm-4">Last Name</label>
-                                              <div class="col-sm-6">
-
-                                                      <input class="form-control" ng-model="lastName" size="16" type="text" placeholder="Last Name">
-                                              </div>
-                                          </div>
-
-                                          <div class="form-group">
-                                              <label class="control-label col-sm-4"> Email</label>
-                                              <div class="col-sm-6">
-                                                  <div class="input-prepend">
-                                                      <input id="username" ng-model="username" placeholder="Email" size="16" type="text" class=" form-control" />
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!--date picker end-->
-
-                                          <!--color picker start-->
-                                          <div class="form-group">
-                                              <label class="control-label col-sm-4">Password</label>
-
-                                              <div class="col-sm-6">
-                                                  <input type="text" ng-model="password" size="16" placeholder="password" class="cp1 form-control">
-                                              </div>
-                                          </div>
-                                          <div class="form-group">
-                                              <label class="control-label col-sm-4">Phone Number</label>
-
-                                              <div class="col-sm-6">
-                                                  <input ng-model="phoneNumber" type="text" placeholder="Phone Number" class="cp2 form-control">
-                                              </div>
-                                          </div>
-
-                                          <!--color picker end-->
-                                          <div class="form-group">
-                                              <label class="control-label col-sm-4">Content Category</label>
-
-										<div class="col-sm-6">
-											<select required="required" id="category" ng-model="category" multiple="multiple" class="cp2 form-control">
-												<c:forEach items="${categories}" var="category">
-													<option value="${category.id}" >${category.name}</option>
-												</c:forEach>
-											</select>											
-										</div>
-									</div>
-                                          
-                                          <div class="form-group">
-                                      <div class="col-lg-offset-4 col-lg-10">
-                                          <button type="submit" class="btn btn-danger">Add</button>
-                                      </div>
-                                  </div>
-                                          
-
-                                      </form>
-
-
-
-							</div>
-						</section>
-					</div> --%>
 				</div>
 
 

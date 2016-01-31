@@ -123,6 +123,7 @@
 							<header class="panel-heading"> Update Tutorial Content </header>
 								<div class="panel-body">
 									<form action="update" class="form-horizontal " method="post">
+										<security:csrfInput/>
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Title </label>
 											<div class="col-sm-10">

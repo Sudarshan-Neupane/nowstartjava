@@ -64,6 +64,20 @@
 										<td>{{ user.firstName }}</td>
 										<td>Active</td>
 										
+										<security:authorize access="hasRole('ROLE_ADMIN')">
+										<td>
+										<div class="btn-group">
+												<a id="allTuts" class="btn btn-primary"
+													href="#" ng-click="tutorialsByWriter(user)"><i
+													class="icon_plus_alt2"></i></a> <a class="btn btn-success"
+													href="#"><i class="icon_check_alt2"></i></a> <a
+													class="btn btn-danger" href="#"><i
+													class="icon_close_alt2"></i></a>
+											</div>
+											</td>
+										</security:authorize>
+										
+										<security:authorize access="hasRole('ROLE_WRITER')">
 										<td ng-if = "currentUser == user.id ">
 											<div class="btn-group">
 												<a id="allTuts" class="btn btn-primary"
@@ -74,6 +88,7 @@
 													class="icon_close_alt2"></i></a>
 											</div>
 										</td>
+										</security:authorize>
 									</tr>
 								</tbody>
 							</table>
@@ -141,6 +156,7 @@
 							<header class="panel-heading"> Update Form</header>
 							<div class="panel-body">
 								<form class="form-horizontal " ng-submit="editTutorialSubmit()" method="post">
+									<security:csrfInput/>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Title </label>
 										<div class="col-sm-10">
@@ -173,6 +189,7 @@
 							<header class="panel-heading"> Add Tutorial Form</header>
 							<div class="panel-body">
 								<form class="form-horizontal " ng-submit="addTutorialSubmit()">
+									<security:csrfInput/>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Title </label>
 										<div class="col-sm-10">

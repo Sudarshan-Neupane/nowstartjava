@@ -1,5 +1,6 @@
 package com.nowstartjava.tutorials.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -17,9 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity @JsonIgnoreProperties({"tutorials"})
 @Table(name = "category")
-public class Category {
+public class Category implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
 	@NotNull(message = "name should not be null")
 	private String name;

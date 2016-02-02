@@ -2,13 +2,6 @@ INSERT INTO `category` (`id`, `name`) VALUES (1, 'Core Java'),(2, 'Spring Framew
 INSERT INTO `category` (`id`, `name`) VALUES (5, 'Hibernate'),(6, 'Servlets and JSP'),(7, 'Java Interview Questions'),(8, 'Struts 2'),(9, 'Android');
 
 -- --------------------------------------------------------
---
--- Dumping data for table `hibernate_sequence`
---
-
-INSERT INTO `hibernate_sequence` (`next_val`) VALUES (28);
-
--- --------------------------------------------------------
 
 -- Dumping data for table `tutorials`
 --
@@ -24,7 +17,23 @@ INSERT INTO `tutorialscontent` (`id`, `dateCreated`, `description`, `displayOrde
 
 -- --------------------------------------------------------
 
-INSERT INTO `user` (`id`, `email`, `firstName`, `image`, `lastName`, `password`, `phoneNumber`, `role`) VALUES (0, 'admin@gmail.com', 'Samul', 'samul.jpg', 'Neupane', 'admin', '6414514622', 'ROLE_ADMIN'),(1, 'sn@gmail.com', 'Sudarshan', 'samul.jpg', 'Neupane', 'admin', '6414514622', 'ROLE_USER');
+INSERT INTO `user` (`id`, `email`, `firstName`, `image`, `lastName`, `password`, `phoneNumber`, `role`) VALUES (0, 'admin@gmail.com', 'Samul', 'samul.jpg', 'Neupane', 'admin', '6414514622', 'ROLE_ADMIN'),(1, 'sn@gmail.com', 'Sudarshan', 'samul.jpg', 'Neupane', 'admin', '6414514622', 'ROLE_USER'),(2, 'yogen.rai.992@gmail.com', 'Yogen', NULL, 'Rai', 'yogen', '6419808605', 'ROLE_WRITER');
 
 --
 -- Constraints for dumped tables
+INSERT INTO `writer_category` (`writer_id`, `category_id`) VALUES (2, 1),(2, 2),(2, 4);
+
+ALTER TABLE `writer_category`
+ ADD KEY `FK4o1wr2xsd64svpcbpi6si58qg` (`category_id`), ADD KEY `FKo9hq9hfk2bc9bn8ojbpq9vmmr` (`writer_id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `writer_category`
+--
+ALTER TABLE `writer_category`
+ADD CONSTRAINT `FK4o1wr2xsd64svpcbpi6si58qg` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+ADD CONSTRAINT `FKo9hq9hfk2bc9bn8ojbpq9vmmr` FOREIGN KEY (`writer_id`) REFERENCES `user` (`id`);
+

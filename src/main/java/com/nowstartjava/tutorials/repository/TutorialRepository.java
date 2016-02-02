@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nowstartjava.tutorials.model.Tutorials;
 
-@Repository
+@Repository 
 public interface TutorialRepository extends JpaRepository<Tutorials, Integer> {
 	/**
 	 * @param id

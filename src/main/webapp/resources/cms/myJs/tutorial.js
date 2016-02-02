@@ -73,11 +73,12 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 						url:'/tutorials/cms/tutorials/delete/'+$scope.tutorialToDeleteId
 				})
 				deleteTut.success(function(data,status,header,config){
-					$("#deleteModal").modal('hide');
 					$scope.deleted = true;
 					$scope.delMessage = "Deleted Successfully";
 					var index = $scope.allTutorials.indexOf(item);
 					$scope.allTutorials.splice(index,1);
+
+					$("#deleteModal").modal('hide');
 				})		 
 			}
 			

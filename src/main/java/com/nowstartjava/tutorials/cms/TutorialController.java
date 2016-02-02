@@ -21,6 +21,7 @@ import com.nowstartjava.tutorials.exceptions.AddTutorialExistsException;
 import com.nowstartjava.tutorials.model.Category;
 import com.nowstartjava.tutorials.model.Tutorials;
 import com.nowstartjava.tutorials.model.User;
+import com.nowstartjava.tutorials.service.CategoryService;
 import com.nowstartjava.tutorials.service.TutorialService;
 
 @Controller
@@ -29,6 +30,9 @@ public class TutorialController {
 
 	@Autowired
 	private TutorialService tutorialService;
+	
+	@Autowired
+	private CategoryService categoryService;
 
 	// retrieve the tutorials for a particular writer
 	@RequestMapping(value = "/{writerId}", method = RequestMethod.GET)
@@ -89,7 +93,9 @@ public class TutorialController {
 		tutorial.setDateCreated(new Date());
 		tutorial.setDisplayOrder(1);
 		tutorial.setSlug(tutorial.getTitle());
-		
+		Category category=categoryService.findOne(tutorial.getCategory().getId());
+		System.out.println(category);
+		tutorial.setCategory(category);
 		try {
 			tutorialService.save(tutorial);
 			ra.addFlashAttribute("message","Added Successfully.");

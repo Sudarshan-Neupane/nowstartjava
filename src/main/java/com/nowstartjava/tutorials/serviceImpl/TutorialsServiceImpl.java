@@ -3,15 +3,17 @@ package com.nowstartjava.tutorials.serviceImpl;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nowstartjava.tutorials.model.Tutorials;
 import com.nowstartjava.tutorials.repository.TutorialRepository;
 import com.nowstartjava.tutorials.service.TutorialService;
 
-@Service
+@Service @Transactional
 public class TutorialsServiceImpl implements TutorialService {
 
 	@Autowired
@@ -30,7 +32,13 @@ public class TutorialsServiceImpl implements TutorialService {
 
 	@Override
 	public void save(Tutorials tutorials) {
-		tutorialsRepository.save(tutorials);
+		try{
+			tutorialsRepository.save(tutorials);			
+		}catch(ConstraintViolationException cve) {
+			System.out.println("-------------------------");
+			System.out.println(cve.getMessage());
+	       System.out.println("Exception");
+	    }
 	}
 
 	@Override

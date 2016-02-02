@@ -21,7 +21,11 @@ public class UserLoginController {
 	private UserService userservice;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String login() {
+	public String login(HttpSession session) {
+		if(session != null){
+			SecurityContextHolder.getContext().setAuthentication(null);
+			session.invalidate();
+		}
 		return "cms/login";
 	}
 

@@ -33,7 +33,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.hbm2ddl.import_files">classpath:nowstartjava.sql</prop>
@@ -46,10 +46,14 @@
     <!-- enable the configuration of transactional behavior based on annotations -->
     <bean class="org.springframework.orm.jpa.JpaTransactionManager"
         id="transactionManager">
-        <property name="dataSource" ref="dataSource" />
+        <!-- <property name="dataSource" ref="dataSource" /> -->
+         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
-
-    <tx:annotation-driven transaction-manager="transactionManager" />
+	<context:component-scan base-package="com.nowstartjava.tutorials.model" />
+	<context:component-scan base-package="com.nowstartjava.tutorials.repository" />
+	<context:component-scan base-package="com.nowstartjava.tutorials.serviceImpl" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
     
-
+	<bean id="persistenceExceptionTranslationPostProcessor"
+      class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 </beans>

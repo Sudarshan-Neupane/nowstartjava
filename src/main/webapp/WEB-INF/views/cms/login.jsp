@@ -9,7 +9,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/resources/imgages/logo.png">
 
-    <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+    <title>Login| Now Start Java</title>
 
     <!-- Bootstrap CSS -->    
     <link href="${pageContext.request.contextPath}/resources/cms/css/bootstrap.min.css" rel="stylesheet">

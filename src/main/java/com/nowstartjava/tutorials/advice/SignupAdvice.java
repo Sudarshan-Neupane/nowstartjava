@@ -21,9 +21,9 @@ public class SignupAdvice {
 	public void aopEmail(JoinPoint jp) {
 		System.out.println("hello sabin");
 		User user = (User) jp.getArgs()[0];
-		emailService.sendEmail(user.getEmail(), "Registration info","Registered Sucessfully to Programming discussion forum!! "+
-				"Your username is: "+user.getEmail()+" and password is: "+
-				user.getPassword()+". Share your idea in Tutorials Java...");
+//		emailService.sendEmail(user.getEmail(), "Registration info","Registered Sucessfully to Programming discussion forum!! "+
+//				"Your username is: "+user.getEmail()+" and password is: "+
+//				user.getPassword()+". Share your idea in Tutorials Java...");
 //		
 	}
 	
@@ -31,9 +31,9 @@ public class SignupAdvice {
 	public void updateAopEmail(JoinPoint jp) {
 		System.out.println("hello sabin");
 		User user = (User) jp.getArgs()[0];
-		emailService.sendEmail(user.getEmail(), "Update Registration info","Updated Registered Sucessfully to Programming discussion forum!! "+
-				"Your username is: "+user.getEmail()+" and password is: "+
-				user.getPassword()+". Share your idea in Tutorials Java...");
+//		emailService.sendEmail(user.getEmail(), "Update Registration info","Updated Registered Sucessfully to Programming discussion forum!! "+
+//				"Your username is: "+user.getEmail()+" and password is: "+
+//				user.getPassword()+". Share your idea in Tutorials Java...");
 //		
 	}
 }

@@ -126,6 +126,10 @@ public class User {
 		this.categories = categories;
 	}
 	
+	@Override
+	public String toString(){
+		return firstName +" "+email+" "+categories;
+	}
 	
 
 }

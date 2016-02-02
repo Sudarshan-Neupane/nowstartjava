@@ -129,7 +129,7 @@ public class Tutorials implements Serializable{
 	
 	@Override
 	public String toString(){
-		return id+" "+title+" "+description;
+		return id+" "+title+" "+description+" "+category;
 	}
 
 	public List<TutorialsContent> getTutorialsContents() {

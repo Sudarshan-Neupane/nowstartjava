@@ -50,4 +50,9 @@ public class Category {
 	public void setTutorials(List<Tutorials> tutorials) {
 		this.tutorials = tutorials;
 	}
+	
+	@Override
+	public String toString(){
+		return id+" "+name;
+	}
 }

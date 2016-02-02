@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/tutorials/resources/css/wall.css">
 
 </head>
-<body ng-app="tutorial">
+<body ng-app="tutorialContent">
 	<!-- container section start -->
 	<section id="container" class="">
 		<!--header start-->
@@ -21,7 +21,7 @@
 		<!--sidebar start-->
 		<jsp:include page="aside.jsp" />
 		<!--main content start-->
-		<section id="main-content" ng-controller="tutorialController">
+		<section id="main-content" ng-controller="tutorialContentController">
 			<section class="wrapper">
 				<div class="row">
 					<div class="col-lg-12">
@@ -29,7 +29,8 @@
 							<i class="fa fa-file-text-o"></i> Tutorial
 						</h3>
 						<ul class="nav nav-tabs" id="tabs">
-							<li><a data-toggle="tab" href="#home">Home</a></li>
+							<li><a
+								href="${pageContext.servletContext.contextPath}/cms/tutorials/${loginUser.id}">Home</a></li>
 							<li class="active"><a data-toggle="tab" href="#contents">Contents</a></li>
 							<li><a data-toggle="tab" href="#addContent">Add Content</a></li>
 							<li><a id="updateTab" ng-show="update" data-toggle="tab" href="#updateContent">Update Content</a></li>
@@ -157,7 +158,7 @@
 				<!-- end of tab div -->
 			</section>
 
-			<!-- Modal -->
+			<!--Delete Modal -->
 			<div class="modal fade" id="myModal" role="dialog">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
@@ -176,7 +177,8 @@
 						</div>
 					</div>
 				</div>
-				</div>
+				</div>				
+				<!-- end of delete modal -->
 		</section>
 		<!--main content end-->
 	</section>

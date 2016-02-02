@@ -1,5 +1,5 @@
-var app = angular.module("tutorial", [ 'ngRoute' ]);
-app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
+var app = angular.module("tutorialContent", [ 'ngRoute' ]);
+app.controller('tutorialContentController', [ '$scope', '$http', '$location', '$route',
 		function($scope, $http, $location, $route) {
 			
 			$scope.deleteTutorialContent = function(id) {
@@ -11,7 +11,7 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 //				alert($scope.contentId);
 				var displayTuts = $http({
 					method : 'GET',
-					url:'/tutorials/cms/contents/delete/'+$scope.contentId
+					url:'/tutorials/cms/tutorials/contents/delete/'+$scope.contentId
 				})
 				displayTuts.success(function(data,status,header,config){
 					$("#myModal").modal("hide");

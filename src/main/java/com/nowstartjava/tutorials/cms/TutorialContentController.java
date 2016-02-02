@@ -19,7 +19,7 @@ import com.nowstartjava.tutorials.model.TutorialsContent;
 import com.nowstartjava.tutorials.service.TutorialContentService;
 
 @Controller
-@RequestMapping("/cms/contents")
+@RequestMapping("/cms/tutorials/contents")
 public class TutorialContentController {
 	
 	@Autowired
@@ -42,11 +42,11 @@ public class TutorialContentController {
 	}
 	
 	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String addTutorialContent(@ModelAttribute("tutorialContent") TutorialsContent tutorialContent){
+	public String addTutorialContent(TutorialsContent tutorialContent){
 		int tutorialId = tutorialContent.getTutorials().getId();
 		
 		tutorialContentService.update(tutorialContent);
-		return "redirect:/cms/contents/"+tutorialId;
+		return "redirect:/cms/tutorials/contents/"+tutorialId;
 	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.POST)
@@ -63,7 +63,7 @@ public class TutorialContentController {
 		System.out.println("Got here-----------------------------------");
 		int tutorialId = tutorialContent.getTutorials().getId();
 		System.out.println("id :"+tutorialId);
-		return "redirect:/cms/contents/"+tutorialId;
+		return "redirect:/cms/tutorials/contents/"+tutorialId;
 	}
 
 }

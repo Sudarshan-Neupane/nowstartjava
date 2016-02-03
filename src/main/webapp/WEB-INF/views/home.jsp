@@ -6,7 +6,7 @@
 <div ng-app="myapp">
 	<div class="row" ng-controller="category">
 		<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3">
-			<div style="position: fixed; margin-top: -15px;">
+			<div style="position: fixed;">
 				<div class="panel panel-primary">
 					<div id="divTotal" class="panel-heading">
 						<h3 class="panel-title">Tutorials</h3>

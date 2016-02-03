@@ -1,50 +1,77 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <!-- <div class="container"> -->
     <div class="row">
-        <div class="col-md-6">
-            <div class="well well-sm">
-                <form class="form-horizontal" method="post">
-                    <fieldset>
-                        <legend class="text-center header">Contact us</legend>
-                        <div class="form-group">
-                           <div class="col-md-10 col-md-offset-1">
-                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
-                            </div>
-                        </div>
+	<div class="col-md-6">
+		<c:if test="${success_message != null}">
+			<div class="alert alert-success">
+				<strong>${success_message}</strong>
+			</div>
+		</c:if>
+		<div class="well well-sm">
+			<form:form id="contactForm" modelAttribute="message" class="form-horizontal" action="submit"
+				method="post">
+				<security:csrfInput/>
+				<fieldset>
+					<legend class="text-center header">Contact us</legend>
+					<div class="form-group">
+						<div class="col-md-10 col-md-offset-1">
+							<input id="fname" name="firstName" path="firstName" type="text"
+								required="required" placeholder="First Name"
+								class="form-control">
+								<em style="color: red;"><form:errors path="firstName"></form:errors></em>
 
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
-                            </div>
-                        </div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-10 col-md-offset-1">
+							<input id="lname" name="lastName" type="text" required="required"
+								placeholder="Last Name" class="form-control">
+								<em style="color: red;"><form:errors path="lastName"></form:errors></em>
+								
+						</div>
+					</div>
 
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
-                            </div>
-                        </div>
+					<div class="form-group">
+						<div class="col-md-10 col-md-offset-1">
+							<input id="email" name="email" type="text"
+								placeholder="Email Address" class="form-control" required>
+								<em style="color: red;"><form:errors path="email"></form:errors></em>
+								
+						</div>
+					</div>
 
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
-                            </div>
-                        </div>
+					<div class="form-group">
+						<div class="col-md-10 col-md-offset-1">
+							<input id="phone" name="phone" type="text" placeholder="Phone"
+								class="form-control">
+								<em style="color: red;"><form:errors path="phone"></form:errors></em>
+								
+						</div>
+					</div>
 
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-10 col-md-offset-1">
+							<textarea class="form-control" path="message" id="message" name="message"
+								placeholder="Enter your massage for us here. We will get back to you within 2 business days."
+								rows="7"></textarea>
+								<em style="color: red;"><form:errors path="message"></form:errors></em>
+								
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-12 text-center">
+							<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form:form>
+		</div>
+	</div>
+	<div class="col-md-6">
             <div>
                 <div class="panel panel-default">
                     <div class="text-center header">Our Office</div>
@@ -97,3 +124,27 @@
         height: 100%;
     }
 </style>
+<script>
+$(document).ready(function () {
+    var intputElements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < intputElements.length; i++) {
+        intputElements[i].oninvalid = function (e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                if (e.target.name == "firstName") {
+                    e.target.setCustomValidity("The field 'First Name' cannot be left blank");
+                }
+                else if(e.target.name == "lastName") {
+                    e.target.setCustomValidity("The field 'Last Name' cannot be left blank");
+                }else if (e.target.name == "email") {
+                	e.target.setCustomValidity("The field 'Email Address' cannot be left blank");
+				}else if (e.target.name == "phone") {
+                	e.target.setCustomValidity("The field 'Phone Number' cannot be left blank");
+				}else{
+					e.target.setCustomValidity("The field 'Message' cannot be left blank");
+				}
+            }
+        };
+    }
+})
+</script>

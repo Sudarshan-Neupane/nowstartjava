@@ -1,8 +1,8 @@
 /**
  * Sudarshan
  */
-var mainapp = angular.module('displayContent', []);
-mainapp.controller('content', function($scope, $http) {	
+var mainApp = angular.module('displayContent', []);
+mainApp.controller('content', function($scope, $http) {	
 	var dispalycontent = $http({
 		method : 'GET',
 		url : '/tutorials/api/content/display/'+$scope.slugid,

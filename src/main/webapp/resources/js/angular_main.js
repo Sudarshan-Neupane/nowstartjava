@@ -10,15 +10,17 @@ app.controller('category', function($scope, $http) {
 		$scope.category = data;
 	})
 
-	var value = $http({
+	/*var value = $http({
 		method : 'GET',
 		url : '/tutorials/tutorial'
 	})
 	value.success(function(data, status, headers, config) {
 		$scope.displayTutorial = data;
-	})
+	})*/
+	$scope.introduction = true;
 
 	$scope.selectCategory = function(id) {
+		$scope.introduction = false;
 		if (id == 0) {
 			var value = $http({
 				method : 'GET',

@@ -14,13 +14,13 @@
 			<div class="col-lg-7">
 				<div class="menuBar">
 					<div class="menu">
-						<a href="#">Home </a>
+						<a href="<c:url value='/'/>">Home </a>
 					</div>
 					<div class="menu">
 						<a href="#aboutUs">About Us</a>
 					</div>
 					<div class="menu">
-						<a href="#contactUs">Contact</a>
+						<a href="<c:url value='/contact'/>">Contact</a>
 					</div>
 				</div>
 			</div>

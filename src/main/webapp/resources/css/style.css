@@ -3,6 +3,17 @@
 	padding: 0px auto;
 }
 
+.intro{
+	font-size: 17px;
+	font-family: monospace;
+}
+.intro-title{
+	color: white;
+	background-color: #337ab7;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius:0px; 
+}
+
 .mainContent {
 	padding-top: 10%;
 }

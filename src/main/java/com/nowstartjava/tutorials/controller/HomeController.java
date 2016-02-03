@@ -35,5 +35,9 @@ public class HomeController {
 //		model.addAttribute("appName","myapp");
 		return "home";
 	}
+	@RequestMapping("/contact")
+	public String getContact(){
+		return "contactPage";
+	}
 	
 }

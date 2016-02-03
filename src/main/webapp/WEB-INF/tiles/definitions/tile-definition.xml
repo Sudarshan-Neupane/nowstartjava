@@ -20,13 +20,18 @@
 	</definition>
 	
 	<definition name="displayContent" extends="baseLayout">
-		<put-attribute name="title" value="Content" />
+		<put-attribute name="title" value="Contents" />
  		<put-attribute name="body" value="/WEB-INF/views/displayContent.jsp" />
 	</definition>
 	
 	<definition name="error-forbidden" extends="baseLayout">
-		<put-attribute name="title" value="Content" />
+		<put-attribute name="title" value="Forbidden Page" />
  		<put-attribute name="body" value="/WEB-INF/views/forbiddenPage.jsp" />
+	</definition>
+	
+	<definition name="contactPage" extends="baseLayout">
+		<put-attribute name="title" value="Contact" />
+ 		<put-attribute name="body" value="/WEB-INF/views/contact.jsp" />
 	</definition>
 	
 </tiles-definitions>

@@ -3,6 +3,12 @@
 <script src="<c:url value="/resources/js/dispalyContent.js"/>"></script>
 <script src="<c:url value="/resources/js/prettify.js"/>"></script>
 <link href="${pageContext.request.contextPath}/resources/css/prettify.css" rel="stylesheet" type="text/css" />
+<!-- <meta property="fb:admins" content="1660122314226958" />
+    <meta property="og:url" content="http://www.hamrotexas.com/Home/Details/@Model.PostID" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Description" />
+    <meta property="og:image" content="@imgUrl" /> -->
 <div ng-app="displayContent">
 	<div ng-init="slugid = ${slugToid.id}">
 		<div class="row" ng-controller="content">
@@ -41,6 +47,9 @@
 						<!-- 
 						defaulat content dispaly Here
 						-->
+						<!-- Facebook share button  -->
+						<div class="fb-share-button" data-href="http://mashable.com/2016/02/01/facebook-passes-exxon-market-cap/?utm_cid=mash-prod-nav-sub-st#lyJzpjL1Iiqz" data-layout="button_count"></div>
+						
 						<div ng-show="!displayDetails">${slugToid.description }</div>
 					</div>
 				</div>
@@ -53,6 +62,23 @@
 		</div>
 	</div>
 </div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1660122314226958',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <script>
 	prettyPrint();
 </script>

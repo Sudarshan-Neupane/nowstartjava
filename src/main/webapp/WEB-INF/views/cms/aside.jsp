@@ -17,6 +17,8 @@
 						<li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> All writers & topics </a></li>
 						<li><a class=""	href="${pageContext.servletContext.contextPath}/cms/tutorials/${loginUser.id}"> Tutorials </a></li>
 					</security:authorize>
+					<li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li>
+					<li><a class="" href="${pageContext.servletContext.contextPath}/cms/menupage"> Menu Page </a></li>
 				</ul></li>
 			<li><a class="" href="${pageContext.servletContext.contextPath}/cms/writers"> <i class="icon_piechart"></i>
 					<span>Writers</span>

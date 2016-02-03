@@ -47,7 +47,6 @@ public class TutorialController {
 
 	@RequestMapping(value="/delete/{tutorialId}",method=RequestMethod.GET)
 	public ResponseEntity<Tutorials> deleteTutorial(@PathVariable("tutorialId")Integer id){
-		System.out.println(id);
 		
 		tutorialService.delete(id);
 		

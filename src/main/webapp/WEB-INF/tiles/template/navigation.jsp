@@ -17,7 +17,7 @@
 					<img alt="company logo"
 					src="<c:url value="/resources/images/logo.png" />">
 				</a><span class="nav-bar"><img alt="company logo"
-					style="height: 50px; width: 350px"
+					style="width: 78%;"
 					src="<c:url value="/resources/images/slogan.png" />"></span>
 			</div>
 			

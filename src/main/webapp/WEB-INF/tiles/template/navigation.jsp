@@ -17,14 +17,14 @@
 					<img alt="company logo"
 					src="<c:url value="/resources/images/logo.png" />">
 				</a><span class="nav-bar"><img alt="company logo"
-					style="width: 78%;"
+					style="width: 76%;"
 					src="<c:url value="/resources/images/slogan.png" />"></span>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="<c:url value='/'/>">HOME</a></li>
-					<li><a href="#about">ABOUT</a></li>
+					<li><a href="<c:url value='/aboutUs'/>">ABOUT</a></li>
 					<li><a href="<c:url value='/contact'/>">CONTACT</a></li>
 				</ul>
 			</div>

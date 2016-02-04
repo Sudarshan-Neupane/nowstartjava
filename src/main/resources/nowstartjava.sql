@@ -37,3 +37,6 @@ ALTER TABLE `writer_category`
 ADD CONSTRAINT `FK4o1wr2xsd64svpcbpi6si58qg` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 ADD CONSTRAINT `FKo9hq9hfk2bc9bn8ojbpq9vmmr` FOREIGN KEY (`writer_id`) REFERENCES `user` (`id`);
 
+
+
+INSERT INTO `message` (`id`, `email`, `firstName`, `lastName`, `message`, `phone`, `date`) VALUES (3, 'yogen.rai.992@gmail.com', 'Yogen', 'Rai', 'You''ve created nice app', '6419808605', '2016-02-03 16:41:13'),(5, 'ygnrai@gmail.com', 'Shyamu', 'Neupane', 'New comment is available now', '6419808605', '2016-02-03 19:25:40'),(6, 'ygnrai@gmail.com', 'Shyamu', 'Neupane', 'I''m again sending you the final mesg.', '6419808605', '2016-02-03 19:25:56');

@@ -44,13 +44,13 @@
 	position: fixed;
 }
 
-.navbar {
+/* .navbar {
 	-webkit-box-shadow: 0px 0px 6px 0px #999;
 	-moz-box-shadow: 0px 0px 6px 0px #999;
 	box-shadow: 0px 3px 5px 0px #008000;
-	/* the rest of your styling */
+	the rest of your styling
 }
-
+ */
 .header {
 	padding-left: 6%;
 	padding-right: 7%;
@@ -142,4 +142,41 @@ input[type='radio']:before {
 	font-family: monospace;
 	font-size: 38px;
 	font-weight: bold;
+}
+
+
+/* added by Yogen */
+.navbar {
+	margin-bottom: 0;
+	/*   background-color: #f4511e; */
+	z-index: 9999;
+	border: 0;
+	font-size: 12px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 4px;
+	border-radius: 0;
+	font-family: Montserrat, sans-serif;
+	-webkit-box-shadow: 0px 0px 6px 0px #999;
+	-moz-box-shadow: 0px 0px 6px 0px #999;
+	box-shadow: 0px 3px 5px 0px #008000;
+}
+
+.navbar li a, .navbar .navbar-brand {
+	color: #337ab7 !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: #1eaef4 !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: #fff !important;
+}
+
+#myNavbar>ul.nav {
+	padding-top: 2%;
+	font-size: 17px;
+	font-weight: 600;
 }

@@ -34,7 +34,7 @@
 
 </head>
 
-<body>
+<body data-target=".navbar" data-offset="60">
 
 
 	<div class="container">

@@ -39,28 +39,6 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 					$scope.allTutorials = data
 				})
 			}
-			/*
-			//get tutorials for given writer
-			$scope.tutorialsByWriter = function(user) {
-//				alert(id);
-				$scope.categoryForWriter = user.categories;
-//				alert($scope.categoryForWriter[0].name);
-				var displayTuts = $http({
-					method : 'GET',
-					url:'/tutorials/tutorials/by_writer/'+user.id
-				})
-				displayTuts.success(function(data,status,header,config){
-//					alert(data.title);
-					$scope.tutorials=data;
-					$scope.message ='';
-					$("#myModal").modal("show");
-				})
-				displayTuts.error(function(data,status,header,config){
-					$scope.message = "No tutorials found for that writer";
-					$("#myModal").modal("show");
-				})
-			}
-			*/
 			$scope.deleteModal = function(tutorial) {
 				$scope.tutorialToDeleteId = tutorial.id;
 				$("#deleteModal").modal("show");

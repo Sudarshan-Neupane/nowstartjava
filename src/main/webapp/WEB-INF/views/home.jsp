@@ -11,12 +11,17 @@
 					<div id="divTotal" class="panel-heading">
 						<h3 class="panel-title">Tutorials</h3>
 					</div>
-					<ul class="list-group">
-						<li class="list-group-item list-group-item-success categoryList" ng-click="selectCategory(0)"><input
-							type="radio" name="category" class="radio-primary">All</li>
-						<li class="list-group-item list-group-item-success categoryList" ng-repeat="n in category"><input
-							type="radio" name="category" class="radio-primary" ng-click="selectCategory(n.id)"> {{n.name}}</li>
-					</ul>
+					<div>
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-success categoryList"
+								ng-click="selectCategory(0)"><input type="radio"
+								name="category" class="radio-primary">All</li>
+							<li class="list-group-item list-group-item-success categoryList"
+								ng-repeat="n in category"><input type="radio"
+								name="category" class="radio-primary"
+								ng-click="selectCategory(n.id)"> {{n.name}}</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,8 @@
 package com.nowstartjava.tutorials.model;
 
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,6 +25,9 @@ public class Message {
 	@NotEmpty
 	@Email
 	private String email;
+	
+	private Date date;
+	
 	private String phone;
 	@NotEmpty
 	@NotNull(message="Message Field can't be empty.")
@@ -64,6 +70,12 @@ public class Message {
 		this.message = message;
 	}
 	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	@Override
 	public String toString(){
 		return firstName+" "+lastName+" "+email+" "+phone+" "+message;

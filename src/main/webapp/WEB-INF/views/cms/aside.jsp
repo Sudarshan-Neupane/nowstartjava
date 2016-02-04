@@ -12,17 +12,23 @@
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a class="" href="${pageContext.servletContext.contextPath}/cms/category"> Category</a></li>
 						<li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li>
-					</security:authorize>
+						</security:authorize>
 					<security:authorize access="hasRole('ROLE_WRITER')">
 						<li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> All writers & topics </a></li>
 						<li><a class=""	href="${pageContext.servletContext.contextPath}/cms/tutorials/${loginUser.id}"> Tutorials </a></li>
 					</security:authorize>
-					<li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li>
+					<%-- <li><a class="" href="${pageContext.servletContext.contextPath}/cms/tutorial"> Tutorials </a></li> --%>
 					<li><a class="" href="${pageContext.servletContext.contextPath}/cms/menupage"> Menu Page </a></li>
 				</ul></li>
 			<li><a class="" href="${pageContext.servletContext.contextPath}/cms/writers"> <i class="icon_piechart"></i>
 					<span>Writers</span>
 			</a></li>
+			
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+			<li><a class="" href="${pageContext.servletContext.contextPath}/cms/messages"> <i class="icon_piechart"></i>
+					<span>Messages</span>
+			</a></li>
+			</security:authorize>
 		</ul>
 		<!-- sidebar menu end-->
 	</div>

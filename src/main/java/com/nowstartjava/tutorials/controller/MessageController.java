@@ -32,10 +32,5 @@ public class MessageController {
 		model.addFlashAttribute("success_message","Thank you for you message. We'll get back to you asap.");
 		return "redirect:/contact";
 	}
-	@RequestMapping(value="/delete",method=RequestMethod.GET)
-	public ResponseEntity<Message> deleteMessage(@PathVariable("messageId")Integer id){
-		messageService.deleteMessage(id);
-		return new ResponseEntity<Message>(HttpStatus.OK);
-	}
 	
 }

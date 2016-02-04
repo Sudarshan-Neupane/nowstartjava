@@ -18,4 +18,17 @@ menuApp.controller('menuController', [ '$scope', '$http', function($scope, $http
 			$scope.menuData = data;
 		})
 	}
+	$scope.deleteMenu = function(id,index) {
+		var conf = confirm("Do you want to delete this page");
+		if (conf == true) {
+			var deleteData = $http({
+				method : 'DELETE',
+				url : '/tutorials/cms/delte_data/' + id
+			})
+			deleteData.success(function(data, status, header, config) {
+				$scope.delMessage ="Data daleted successfully";
+			})
+			this.displayMenu.splice(index,1);
+		}
+	}
 } ]);

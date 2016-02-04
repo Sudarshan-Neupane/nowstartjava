@@ -22,14 +22,14 @@ public class MenuController {
 	private MenuService menuService;
 
 	@RequestMapping(value = "/cms/save_menu", method = RequestMethod.POST)
-	private String addMenu(@ModelAttribute("menu") Menu menu, Model model,RedirectAttributes redirectAttr) {
+	private String addMenu(@ModelAttribute("menu") Menu menu, Model model, RedirectAttributes redirectAttr) {
 		menuService.save(menu);
 		redirectAttr.addFlashAttribute("messageInsert", "Data insert successfully!!");
 		return "redirect:/cms/menupage";
 	}
 
 	@RequestMapping(value = "/cms/update_menu", method = RequestMethod.POST)
-	private String updateMenu(@ModelAttribute("menu") Menu menu,RedirectAttributes redirectAttr) {
+	private String updateMenu(@ModelAttribute("menu") Menu menu, RedirectAttributes redirectAttr) {
 		menuService.update(menu);
 		redirectAttr.addFlashAttribute("messageUpdate", "Data update successfully!!");
 		return "redirect:/cms/menupage";
@@ -44,6 +44,14 @@ public class MenuController {
 	@RequestMapping(value = "/cms/getmenu_byid/{id}", method = RequestMethod.GET)
 	private ResponseEntity<Menu> getMenuById(@PathVariable("id") Integer id) {
 		return new ResponseEntity<Menu>(menuService.findOne(id), HttpStatus.OK);
+	}
+
+	// deleting data from the database
+	@RequestMapping(value = "/cms/delte_data/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Menu> deleteData(@PathVariable("id") Integer id) {
+		menuService.deleteMenu(id);
+		return new ResponseEntity<Menu>(HttpStatus.OK);
+
 	}
 
 }

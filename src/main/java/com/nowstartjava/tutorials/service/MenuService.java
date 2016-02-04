@@ -12,4 +12,6 @@ public interface MenuService {
 	public Menu findOne(Integer id);
 	
 	public void update(Menu menu);
+	
+	public void deleteMenu(Integer id);
 }

@@ -71,6 +71,11 @@
 								<strong>${messageUpdate}</strong>
 							</div>
 						</c:if>
+						<div ng-if="delMessage">
+							<div class="alert alert-success">
+								<strong> {{ delMessage }}</strong>
+							</div>
+						</div>
 						<section class="panel">
 							<header class="panel-heading"> Display Category </header>
 							<table class="table table-striped table-advance table-hover">
@@ -87,7 +92,7 @@
 											<div class="btn-group">
 												<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"
 													ng-click="getDataForEdit(menu.id)">Edit</button>
-												<button type="button" class="btn btn-danger" ng-click="deleteCategory(category) ">
+												<button type="button" class="btn btn-danger" ng-click="deleteMenu(menu.id,$index)">
 													<span class="gicon_check_alt2"></span>Delete
 												</button>
 											</div>

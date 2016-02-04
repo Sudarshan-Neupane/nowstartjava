@@ -36,7 +36,10 @@ public class MenuServiceImpl implements MenuService {
 		oldMenu.setDescription(menu.getDescription());
 		menuRepository.save(menu);
 	}
-	
-	
+
+	@Override
+	public void deleteMenu(Integer id) {
+		menuRepository.delete(id);
+	}
 
 }

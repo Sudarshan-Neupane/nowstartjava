@@ -12,7 +12,7 @@
 				<div>
 					<a class="nav-bar" href="<c:url value="/${object.argument}" />"> <img alt="company logo"
 						src="<c:url value="/resources/images/logo.png" />">
-					</a><span class="nav-bar"><img alt="company logo" style="width: 76%;"
+					</a><span class="nav-bar"><img alt="company logo" class="slogan"
 						src="<c:url value="/resources/images/slogan.png" />"></span>
 				</div>
 			</div>

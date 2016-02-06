@@ -180,3 +180,9 @@ input[type='radio']:before {
 	font-size: 17px;
 	font-weight: 600;
 }
+.slogan{
+	width: 40%;
+    position: fixed;
+    margin-top: 1%;
+    height: 55px;
+}

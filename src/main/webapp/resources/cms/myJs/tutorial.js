@@ -1,20 +1,20 @@
-var app = angular.module("tutorial", [ 'ngRoute' ]);
-app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
+angular.module("tutorial", [ 'ngRoute' ])
+.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 		function($scope, $http, $location, $route) {
 			var category = $http({
 				method : 'GET',
-				url : '/tutorials/category'
+				url : '/category'
 			});
 			category.success(function(data, status, header, config) {
 				$scope.displayCategory = data;
 			});
 			// get tutorials for the database
 
-			var tutorials = $http({
+			var writers = $http({
 				method : 'GET',
-				url : '/tutorials/cms/writers/get_all'
+				url : 'writers/get_all'
 			});
-			tutorials.success(function(data, status, header, config) {
+			writers.success(function(data, status, header, config) {
 				$scope.disUser = data;
 			})
 			// display tutorial form categoryid
@@ -32,7 +32,7 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 //				alert(id);
 				var tutorials = $http({
 					method : 'GET',
-					url:'/tutorials/tutorials/by_writer/'+id
+					url:'by_writer/'+id
 				})
 				tutorials.success(function(data,status,header,config) {
 //					alert(data[0].description);
@@ -40,7 +40,7 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 				})
 			}
 			$scope.deleteModal = function(tutorial) {
-				$scope.tutorialToDeleteId = tutorial.id;
+				$scope.tutorialToDelete = tutorial;
 				$("#deleteModal").modal("show");
 			}
 			
@@ -48,12 +48,12 @@ app.controller('tutorialController', [ '$scope', '$http', '$location', '$route',
 			$scope.deleteTutorial = function() {
 				var deleteTut =$http( {
 						method : 'GET',
-						url:'/tutorials/cms/tutorials/delete/'+$scope.tutorialToDeleteId
+						url:'delete/'+$scope.tutorialToDelete.id
 				})
 				deleteTut.success(function(data,status,header,config){
 					$scope.deleted = true;
 					$scope.delMessage = "Deleted Successfully";
-					var index = $scope.allTutorials.indexOf(item);
+					var index = $scope.allTutorials.indexOf($scope.tutorialToDelete);
 					$scope.allTutorials.splice(index,1);
 
 					$("#deleteModal").modal('hide');

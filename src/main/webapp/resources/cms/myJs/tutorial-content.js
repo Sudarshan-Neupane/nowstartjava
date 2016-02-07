@@ -11,7 +11,7 @@ app.controller('tutorialContentController', [ '$scope', '$http', '$location', '$
 //				alert($scope.contentId);
 				var displayTuts = $http({
 					method : 'GET',
-					url:'/tutorials/cms/tutorials/contents/delete/'+$scope.contentId
+					url:'delete/'+$scope.contentId
 				})
 				displayTuts.success(function(data,status,header,config){
 					$("#myModal").modal("hide");
@@ -24,7 +24,7 @@ app.controller('tutorialContentController', [ '$scope', '$http', '$location', '$
 //				alert(id);
 				var displayTuts = $http({
 					method : 'GET',
-					url:'/tutorials/api/content/displayDetails/'+id
+					url:'/api/content/displayDetails/'+id
 				})
 				displayTuts.success(function(data,status,header,config){
 					$scope.tutorialContent = data;

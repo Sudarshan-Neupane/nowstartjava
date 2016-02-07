@@ -31,7 +31,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 							categories : categoryIds,
 						};
 					
-						var result = $http.post("/tutorials/cms/writers/add", dataObj);
+						var result = $http.post("cms/writers/add", dataObj);
 						/*  */
 						result.success(function(data, status, headers, config) {
 							/*$("#userForm").hide();*/
@@ -55,7 +55,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 				function getWriters(){
 					var writers = $http({
 	                    method : 'GET',
-	                    url : '/tutorials/cms/writers/get_all'
+	                    url : 'writers/get_all'
 	                });
 	                writers.success(function(data, status, header, config) {
 	                    $scope.writers = data;
@@ -67,7 +67,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 				$scope.removeWriter = function(id) {
 					var deleteData = $http({
 						method : 'DELETE',
-						url : '/tutorials/cms/writers/delete/' + id
+						url : 'cms/writers/delete/' + id
 					})
 					deleteData.success(function(data, status, header, config) {
 						getWriters();
@@ -83,7 +83,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 				$scope.getUser = function(id) {
 					var user = $http({
 						method:'GET',
-						url: '/tutorials/cms/writers/get_one/'+id
+						url: 'writers/get_one/'+id
 					});
 					user.success(function(data,status,header,config) {
 						$scope.action = "Update ";

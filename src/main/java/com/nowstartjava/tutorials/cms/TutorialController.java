@@ -45,6 +45,17 @@ public class TutorialController {
 		return "cms/tutorial-list";
 	}
 
+	//retrieve the tutorials for a particular writer
+		@RequestMapping(value="by_writer/{writerId}",method=RequestMethod.GET)
+		public ResponseEntity<List<Tutorials>> getTutorialsByWriterId(@PathVariable("writerId") Integer id){
+			List<Tutorials> tutorials=tutorialService.findAllByWriterId(id);
+			if(tutorials == null){
+				System.out.println("No tutorial found.");
+				return new ResponseEntity(HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<List<Tutorials>>(tutorials,HttpStatus.OK);
+		}
+	
 	@RequestMapping(value="/delete/{tutorialId}",method=RequestMethod.GET)
 	public ResponseEntity<Tutorials> deleteTutorial(@PathVariable("tutorialId")Integer id){
 		

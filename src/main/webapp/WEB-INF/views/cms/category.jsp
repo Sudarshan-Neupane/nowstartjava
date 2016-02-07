@@ -37,7 +37,7 @@
 				<div class="row" ng-controller="submitCategory">
 					<div class="col-lg-6">
 						<section class="panel">
-							<header class="panel-heading"> Basic Forms </header>
+							<header class="panel-heading"> Add Tutorial Category </header>
 							<div class="panel-body">
 								<form role="form" method="post" ng-submit="submitClick(editId)" name="categoryForm">
 									<div class="alert alert-success" ng-show="message">
@@ -56,7 +56,7 @@
 					<div class="col-lg-6">
 						<section class="panel">
 							<header class="panel-heading"> Display Category </header>
-							<table class="table table-striped table-advance table-hover">
+							<table class="table table-striped table-advance table-hover" ng-init="allCategories()">
 								<tbody>
 									<tr>
 										<th><i class="icon_profile"></i> S.No</th>

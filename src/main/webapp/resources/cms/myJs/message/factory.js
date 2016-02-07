@@ -11,7 +11,7 @@ angular.module('EmailApp').factory(
 			exports.getMessage = function(params) {
 				if (params.id) {
 					var deferred = $q.defer();
-					$http.get('/tutorials/cms/inbox/'+params.id).success(
+					$http.get('inbox/'+params.id).success(
 							function(data) {
 								deferred.resolve(data);
 							}).error(function(data) {
@@ -28,7 +28,7 @@ angular.module('EmailApp').factory(
 	exports.messages = [];
 	exports.goToMessage = function(id) {
 		if (angular.isNumber(id)) {
-			console.log('inbox/email/' + id)
+//			console.log('inbox/email/' + id)
 			$location.path('inbox/email/' + id)
 		}
 	}
@@ -36,7 +36,7 @@ angular.module('EmailApp').factory(
 	exports.deleteMessage = function(id, index) {
 		var deleteMsg = $http({
 			method:'DELETE',
-			url : '/tutorials/cms/delete/' + id
+			url : 'delete/' + id
 		});
 		deleteMsg.success(function() {
 //			this.deleted = !this.deleted;
@@ -48,7 +48,7 @@ angular.module('EmailApp').factory(
 
 	exports.getMessages = function() {
 		var deferred = $q.defer();
-		return $http.get('/tutorials/cms/inbox').success(function(data) {
+		return $http.get('inbox').success(function(data) {
 			exports.messages = data;
 			deferred.resolve(data);
 		}).error(function(data) {

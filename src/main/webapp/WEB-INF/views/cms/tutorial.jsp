@@ -56,7 +56,7 @@
 										<th><i class="icon_mobile"></i> Status</th>
 										<th><i class="icon_cogs"></i> Action</th>
 									</tr>
-									<tr ng-repeat="user in disUser">
+									<tr ng-repeat="user in disUser track by $index">
 										<td>{{ $index +1 }}</td>
 										<td>
 											<li ng-repeat="cat in user.categories"

@@ -1,7 +1,7 @@
 angular.module('myapp', []).controller('category', function($scope, $http) {
 	var categories = $http({
 		method : 'GET',
-		url : '/tutorials/category'
+		url : 'category'
 	})
 	categories.success(function(data, status, headers, config) {
 		$scope.category = data;
@@ -13,7 +13,7 @@ angular.module('myapp', []).controller('category', function($scope, $http) {
 		if (id == 0) {
 			var value = $http({
 				method : 'GET',
-				url : '/tutorials/tutorial'
+				url : 'tutorial'
 			})
 			value.success(function(data, status, headers, config) {
 				$scope.displayTutorial = data;
@@ -21,7 +21,7 @@ angular.module('myapp', []).controller('category', function($scope, $http) {
 		} else {
 			var tutorialbyCat = $http({
 				method : 'GET',
-				url : '/tutorials/tutorial/' + id
+				url : 'tutorial/' + id
 			})
 			tutorialbyCat.success(function(data, status, headers, congig) {
 				$scope.displayTutorial = data;

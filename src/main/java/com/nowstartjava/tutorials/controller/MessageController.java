@@ -27,7 +27,7 @@ public class MessageController {
 		if(result.hasErrors()){
 			return "contactPage";
 		}
-		System.out.println(message);
+//		System.out.println(message);
 		messageService.saveMessage(message);
 		model.addFlashAttribute("success_message","Thank you for you message. We'll get back to you asap.");
 		return "redirect:/contact";

@@ -3,7 +3,7 @@ var menuApp = angular.module("menuApp", []);
 menuApp.controller('menuController', [ '$scope', '$http', function($scope, $http) {
 	var dataFromMenu = $http({
 		method : 'GET',
-		url : '/tutorials/cms/getmenu',
+		url : 'getmenu',
 	});
 	dataFromMenu.success(function(data, status, header, config) {
 		$scope.displayMenu = data;
@@ -11,7 +11,7 @@ menuApp.controller('menuController', [ '$scope', '$http', function($scope, $http
 	$scope.getDataForEdit = function(id) {
 		var getData = $http({
 			method : 'GET',
-			url : '/tutorials/cms/getmenu_byid/' + id
+			url : 'getmenu_byid/' + id
 		});
 		getData.success(function(data, status, header, config) {
 			CKEDITOR.instances.desText.setData(data.description);
@@ -23,7 +23,7 @@ menuApp.controller('menuController', [ '$scope', '$http', function($scope, $http
 		if (conf == true) {
 			var deleteData = $http({
 				method : 'DELETE',
-				url : '/tutorials/cms/delte_data/' + id
+				url : 'cms/delte_data/' + id
 			})
 			deleteData.success(function(data, status, header, config) {
 				$scope.delMessage ="Data daleted successfully";

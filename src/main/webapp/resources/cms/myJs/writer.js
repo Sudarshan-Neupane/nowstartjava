@@ -31,7 +31,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 							categories : categoryIds,
 						};
 					
-						var result = $http.post("cms/writers/add", dataObj);
+						var result = $http.post("writers/add", dataObj);
 						/*  */
 						result.success(function(data, status, headers, config) {
 							/*$("#userForm").hide();*/
@@ -67,7 +67,7 @@ var app = angular.module("writerApp", [ 'ngRoute' ]);
 				$scope.removeWriter = function(id) {
 					var deleteData = $http({
 						method : 'DELETE',
-						url : 'cms/writers/delete/' + id
+						url : 'writers/delete/' + id
 					})
 					deleteData.success(function(data, status, header, config) {
 						getWriters();

@@ -2,13 +2,13 @@ angular.module('EmailApp',['ngRoute','ngSanitize'])
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/inbox',{
-		templateUrl:'/resources/cms/myJs/email/inbox.html',
+		templateUrl:'/resources/cms/myJs/message/email/inbox.html',
 		controller:'InboxCtrl',
 		controllerAs : 'inbox'
 		
 	})
 	.when('/inbox/email/:id',{
-		templateUrl: '/resources/cms/myJs/email/email.html',
+		templateUrl: '/resources/cms/myJs/message/email/email.html',
 		controller:'EmailCtrl',
 		controllerAs: 'email'
 			

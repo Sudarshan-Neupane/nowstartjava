@@ -9,7 +9,7 @@ angular.module('EmailApp')
       restrict: 'E',
       replace: true,
       scope: true,
-      templateUrl: "/tutorials/resources/cms/myJs/message/directives/email.tmpl.html",
+      templateUrl: "/resources/cms/myJs/message/directives/email.tmpl.html",
       controllerAs: 'email',
       controller: function ($routeParams, $scope, EmailFactory) {
         this.message = {};

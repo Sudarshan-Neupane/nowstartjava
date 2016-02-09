@@ -19,7 +19,7 @@
 <script src="<c:url value="/resources/cms/myJs/message/factory.js" />"></script>
 <script src="<c:url value="/resources/cms/myJs/message/directives/EmailDrctv.js" />"></script>
 <script src="<c:url value="/resources/cms/myJs/message/directives/InboxDrctv.js" />"></script>
-<link rel="stylesheet" href="/tutorials/resources/cms/myCss/email.css">
+<link rel="stylesheet" href="/resources/cms/myCss/email.css">
 
 
 </head>

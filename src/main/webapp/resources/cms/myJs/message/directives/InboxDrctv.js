@@ -9,7 +9,7 @@ angular.module('EmailApp')
       restrict: 'EA',
       replace: true,
       scope: true,
-      templateUrl: "/tutorials/resources/cms/myJs/message/directives/inbox.tmpl.html",
+      templateUrl: "/resources/cms/myJs/message/directives/inbox.tmpl.html",
       controllerAs: 'inbox',
 
       controller: function (InboxFactory) {

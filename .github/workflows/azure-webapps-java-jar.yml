@@ -15,22 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Java version
-        uses: actions/setup-java@v2.3.1
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          cache: 'maven'
-
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+    - name: just echo a message
+      run: |
+        echo Hello there!
 
   deploy:
     runs-on: ubuntu-latest

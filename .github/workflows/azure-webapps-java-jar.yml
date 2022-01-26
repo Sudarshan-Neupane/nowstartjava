@@ -31,10 +31,15 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: just echo a message
       run: |
         echo Hello there!
+        
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: just echo a message from deploy
+      run: |
+        echo Hello there from deploy!

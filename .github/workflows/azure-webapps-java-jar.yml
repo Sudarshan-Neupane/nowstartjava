@@ -19,7 +19,7 @@ jobs:
       run: |
         echo Hello there!
 
-  deploy:
+  deploy1:
     runs-on: ubuntu-latest
     needs: build
     environment:

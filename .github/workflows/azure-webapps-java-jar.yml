@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy_to_dev
     if: github.event_name != 'pull_request'
-    environment: beta
+    environment: prod
     steps:
     - name: Download a Deployment Zip
       uses: actions/download-artifact@v2

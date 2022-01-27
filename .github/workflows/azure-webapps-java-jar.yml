@@ -9,30 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
-    - name: Build
-      run: dotnet build -c Release
-      working-directory: ./api
-    - name: Publish
-      run: dotnet publish -c Release
-      working-directory: ./api
-    - name: Zip Functions Package
-      run: zip -r ../deploy.zip ./
-      working-directory: ./api/TwoWeeksReady/bin/Release/netcoreapp3.1/publish/
-    - name: Upload Deployment Zip
-      uses: actions/upload-artifact@v2
-      with:
-        name: deployment_zip
-        path: ./api/TwoWeeksReady/bin/Release/netcoreapp3.1/deploy.zip
-    - name: Upload Deployment Script
-      uses: actions/upload-artifact@v2
-      with:
-        name: deployment_script
-        path: ./az/deploy-backend.sh
+    - name: just echo a message
+      run: |
+        echo Hello there!
       
   deploy_to_dev:
     runs-on: ubuntu-latest

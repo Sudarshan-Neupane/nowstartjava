@@ -2,16 +2,8 @@ name: Api CI/CD
 
 on:
   push:
-    paths:
-      - 'api/**'
-      - 'TwoWeeksReady.Common/**'
-      - '.github/workflows/api.yaml'
-    branches: [ master ]
-  pull_request:
-    paths:
-      - 'api/**'
-      - '.github/workflows/api.yaml'
-    branches: [ master ]
+    branches:
+      - master
   workflow_dispatch:
 jobs:
   build:

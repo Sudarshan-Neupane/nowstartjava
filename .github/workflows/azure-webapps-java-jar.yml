@@ -28,3 +28,11 @@ jobs:
       - name: Download artifact from build job echo test
         run: |
           echo Hello from the run test
+          
+  master:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download master branch
+        run: |
+          echo Hello from the dev branch

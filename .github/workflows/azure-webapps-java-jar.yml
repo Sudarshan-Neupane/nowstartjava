@@ -29,22 +29,6 @@ jobs:
     if: github.event_name != 'pull_request'
     environment: prod
     steps:
-    - name: Download a Deployment Zip
-      uses: actions/download-artifact@v2
-      with:
-        name: deployment_zip
-    - name: Download a Deployment Script
-      uses: actions/download-artifact@v2
-      with:
-        name: deployment_script
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Azure Deploy Resources
-      if: github.event_name != 'pull_request'
-      uses: Azure/cli@v1.0.0
-      with:
-        inlineScript: |
-          chmod +x ./deploy-backend.sh
-          ./deploy-backend.sh -z deploy.zip -r 2wr-beta-resources -e 2wrbeta   
+    - name: just echo a message
+      run: |
+        echo Hello there!

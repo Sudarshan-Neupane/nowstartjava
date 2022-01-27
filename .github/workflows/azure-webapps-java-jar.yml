@@ -18,11 +18,11 @@ jobs:
     - name: just echo a message
       run: |
         echo Hello there!
-  deploy1:
+  deployment:
     runs-on: ubuntu-latest
     needs: build
     
     steps:
       - name: Download artifact from build job echo test
         run: |
-          Hello from the run test
+          echo Hello from the run test
